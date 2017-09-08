@@ -3,11 +3,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Example Component</div>
-
-                    <div class="panel-body">
-                        I'm an example component!
-                    </div>
+                    <el-button @click="visible = true">按钮</el-button>
+                    <el-dialog v-model="visible" title="Hello world">
+                        <p>欢迎使用 Element</p>
+                    </el-dialog>
                 </div>
             </div>
         </div>
@@ -16,8 +15,29 @@
 
 <script>
     export default {
+        data(){
+            return {
+                items:'234',
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            this.getUserList();
+        },
+        methods:{
+            getUserList()
+            {
+                var _this=this;
+                console.log('woaini');
+                axios.get('console/users')
+                        .then(function (response) {
+                            _this.items=response.data;
+                            console.log(_this.items);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+            }
         }
     }
 </script>
