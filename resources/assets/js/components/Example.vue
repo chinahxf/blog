@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <el-button @click="visible = true">按钮</el-button>
+                    <!--<el-button @click="visible = true">按钮</el-button>
                     <el-dialog v-model="visible" title="Hello world">
                         <p>欢迎使用 Element</p>
-                    </el-dialog>
+                    </el-dialog>-->
                 </div>
             </div>
         </div>

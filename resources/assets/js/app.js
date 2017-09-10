@@ -18,7 +18,14 @@ Vue.use(ElementUI)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Vue.component('admin-index', require('./components/admin/layout/nav.vue'));
+Vue.component('admin-layout-nav', require('./components/admin/layout/nav.vue'));
 Vue.component('example', require('./components/Example.vue'));
+
+
+// articles
+Vue.component('admin-article-list', require('./components/admin/articles/list.vue'));
+
 
 const app = new Vue({
     el: '#app'

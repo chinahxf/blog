@@ -1,0 +1,79 @@
+body {
+    Overflow: hidden;
+}
+
+.zl-navbar-inverse {
+    background-color: #324057;
+    border-color: #324057;
+}
+
+.navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+
+.navbar-nav > li > a:hover {
+    color: #bfcbd9;
+}
+
+.zl-admin-navbar {
+    margin-bottom: 0px;
+}
+
+.zl-admin-container {
+    width: 1366px;
+    margin: 0 0 0 0;
+}
+
+.zl-col-xs-1,
+.zl-col-sm-1,
+.zl-col-md-1,
+.zl-col-lg-1,
+.zl-col-xs-2,
+.zl-col-sm-2,
+.zl-col-md-2,
+.zl-col-lg-2,
+.zl-col-xs-3,
+.zl-col-sm-3,
+.zl-col-md-3,
+.zl-col-lg-3,
+.zl-col-xs-4,
+.zl-col-sm-4,
+.zl-col-md-4,
+.zl-col-lg-4,
+.zl-col-xs-5,
+.zl-col-sm-5,
+.zl-col-md-5,
+.zl-col-lg-5,
+.zl-col-xs-6,
+.zl-col-sm-6,
+.zl-col-md-6,
+.zl-col-lg-6,
+.zl-col-xs-7,
+.zl-col-sm-7,
+.zl-col-md-7,
+.zl-col-lg-7,
+.zl-col-xs-8,
+.zl-col-sm-8,
+.zl-col-md-8,
+.zl-col-lg-8,
+.zl-col-xs-9,
+.zl-col-sm-9,
+.zl-col-md-9,
+.zl-col-lg-9,
+.zl-col-xs-10,
+.zl-col-sm-10,
+.zl-col-md-10,
+.zl-col-lg-10,
+.zl-col-xs-11,
+.zl-col-sm-11,
+.zl-col-md-11,
+.zl-col-lg-11,
+.zl-col-xs-12,
+.zl-col-sm-12,
+.zl-col-md-12,
+.zl-col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
