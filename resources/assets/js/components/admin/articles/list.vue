@@ -1,56 +1,51 @@
-<el-form :inline="true" :model="form_data" class="demo-form-inline">
-    <!--<el-form-item label="创建时间">-->
-    <!--<el-date-picker-->
-    <!--v-model="form_data.dates"-->
-    <!--type="daterange"-->
-    <!--placeholder="选择日期范围">-->
-    <!--</el-date-picker>-->
-    <!--</el-form-item>-->
-    <!--<el-form-item label="活动标题">-->
-    <!--<el-input v-model="form_data.title"></el-input>-->
-    <!--</el-form-item>-->
-    <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
-    </el-form-item>
-</el-form>
 <template>
+    <div>
+        <div class="text-right">
+            <el-form :inline="true" :model="form_data" class="demo-form-inline">
+                <el-form-item label="活动标题">
+                    <el-input v-model="form_data.title"></el-input>
+                </el-form-item>
+                <el-form-item label="创建时间">
+                <el-date-picker
+                v-model="form_data.dates"
+                type="daterange"
+                placeholder="选择日期范围">
+                </el-date-picker>
+                </el-form-item>
 
-    <el-table
-            :data="tableData"
-            border
-            style="width: 100%"
-            :default-sort="{prop: 'date', order: 'descending'}"
-    >
-        <el-table-column
-                prop="date"
-                label="日期"
-                sortable
-                width="180">
-        </el-table-column>
-        <el-table-column
-                prop="name"
-                label="姓名"
-                sortable
-                width="180">
-        </el-table-column>
-        <el-table-column
-                prop="address"
-                label="地址">
-        </el-table-column>
-    </el-table>
-    <!--<div class="container">-->
-    <!--<div class="row">-->
-    <!--<div class="col-md-8 col-md-offset-2">-->
-    <!--<div class="panel panel-default">-->
-    <!--<div class="panel-heading">Example Component</div>-->
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit">查询</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+        <template>
+            <el-table
+                    :data="tableData"
+                    border
+                    style="width: 100%"
+                    :default-sort="{prop: 'date', order: 'descending'}"
+            >
+                <el-table-column
+                        prop="date"
+                        label="日期"
+                        sortable
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="姓名"
+                        sortable
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="地址">
+                </el-table-column>
+            </el-table>
 
-    <!--<div class="panel-body">-->
-    <!--I'm an example component!-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+        </template>
+
+    </div>
 </template>
 
 <script>
@@ -74,9 +69,9 @@
                     name: '王小虎',
                     address: '上海市普陀区金沙江路 1516 弄'
                 }],
-                form_data:{
-                    dates:'',
-                    title:''
+                form_data: {
+                    dates: '',
+                    title: ''
                 },
                 items: '234',
             }
@@ -98,9 +93,9 @@
                     });
 
             },
-    onSubmit(){
+            onSubmit() {
                 console.log('aaaa');
-    }
+            }
         }
     }
 </script>
