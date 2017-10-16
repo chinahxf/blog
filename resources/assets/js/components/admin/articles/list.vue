@@ -20,21 +20,18 @@
         </div>
         <template>
             <el-table
-                    :data="tableData"
+                    :data="items"
                     border
                     style="width: 100%"
-                    :default-sort="{prop: 'date', order: 'descending'}"
             >
                 <el-table-column
                         prop="date"
                         label="日期"
-                        sortable
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="name"
                         label="姓名"
-                        sortable
                         width="180">
                 </el-table-column>
                 <el-table-column
@@ -73,7 +70,7 @@
                     dates: '',
                     title: ''
                 },
-                items: '234',
+                items: [],
             }
         },
         mounted() {
