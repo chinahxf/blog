@@ -24,7 +24,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     Route::get('/', 'HomeController@index');
 
     Route::group(['prefix' => 'articles'], function () {
+        Route::get('/getArticleList', 'ArticleController@getArticleList');
+        Route::get('/addArticle', 'ArticleController@addArticle');
+
         Route::get('/', 'ArticleController@index');
+        Route::post('/', 'ArticleController@create');
     });
     Route::get('/users', 'UserController@index');
+
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/', 'CategoryController@index');
+    });
+});
+Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Common'], function () {
+
+        Route::get('/getCategory', 'CommonController@getCategory');
 });

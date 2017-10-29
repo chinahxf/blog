@@ -9,7 +9,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
+import '../../../public/plugin/ueditor/ueditor.config'
+import '../../../public/plugin/ueditor/ueditor.all'
+import '../../../public/plugin/ueditor/lang/zh-cn/zh-cn'
+import '../../../public/plugin/ueditor/ueditor.parse'
 
 Vue.use(ElementUI)
 /**
@@ -25,11 +29,12 @@ Vue.component('example', require('./components/Example.vue'));
 
 // articles
 Vue.component('admin-article-list', require('./components/admin/articles/list.vue'));
+Vue.component('admin-article-add', require('./components/admin/articles/form.vue'));
 
 
 
 
-Vue.component(
+/*Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue')
 );
@@ -42,7 +47,7 @@ Vue.component(
 Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue')
-);
+);*/
 const app = new Vue({
     el: '#app'
 });

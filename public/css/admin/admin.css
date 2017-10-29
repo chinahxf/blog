@@ -1,10 +1,10 @@
 body {
-    Overflow: hidden;
+
 }
 
 .zl-navbar-inverse {
-    background-color: #324057;
-    border-color: #324057;
+    background-color: #5A5E66;
+    border-color: #5A5E66;
 }
 
 .navbar-nav > li > a:focus {
@@ -22,6 +22,20 @@ body {
 .zl-admin-container {
     width: 1366px;
     margin: 0 0 0 0;
+}
+
+/*父元素关闭漂浮*/
+.zl-close-float {
+    zoom: 1;
+}
+
+.zl-close-float:after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
 }
 
 .zl-col-xs-1,
@@ -77,3 +91,14 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
+.zl-admin-row{
+    margin:0 0 0 0;
+}
+/*.zl-form-width {
+    width: 500px;
+}*/
+
+/*
+.zl-form-big {
+    margin:0 auto;
+}*/

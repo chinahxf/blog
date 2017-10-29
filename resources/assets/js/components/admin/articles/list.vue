@@ -3,7 +3,7 @@
         <div class="text-right">
             <el-form :inline="true" :model="form_data" class="demo-form-inline">
                 <el-form-item label="活动标题">
-                    <el-input v-model="form_data.title"></el-input>
+                    <el-input v-model="form_data.name"></el-input>
                 </el-form-item>
                 <el-form-item label="创建时间">
                 <el-date-picker
@@ -14,7 +14,7 @@
                 </el-form-item>
 
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">查询</el-button>
+                    <el-button type="primary" icon="el-icon-search" @click="getArticleList">搜索</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -22,26 +22,44 @@
             <el-table
                     :data="items"
                     border
+                    v-loading="loading"
                     style="width: 100%"
             >
                 <el-table-column
-                        prop="date"
-                        label="日期"
+                        prop="article_id"
+                        label="文章ID"
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="姓名"
+                        label="文章名"
                         width="180">
                 </el-table-column>
                 <el-table-column
-                        prop="address"
-                        label="地址">
+                        prop="browse_num"
+                        label="浏览数量">
+                </el-table-column>
+                <el-table-column
+                        prop="created_at"
+                        label="创建时间">
+                </el-table-column>
+                <el-table-column
+                        prop="updated_at"
+                        label="修改时间">
                 </el-table-column>
             </el-table>
 
         </template>
 
+        <div class="block">
+            <el-pagination
+                    :current-page="1"
+                    @current-change="handleCurrentChange"
+                    :page-size="paginate.per_page"
+                    layout="prev, pager, next"
+                    :total="paginate.total">
+            </el-pagination>
+        </div>
     </div>
 </template>
 
@@ -49,50 +67,44 @@
     export default {
         data() {
             return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }],
                 form_data: {
-                    dates: '',
-                    title: ''
+                    dates: [],
+                    name: ''
                 },
+                paginate:{},
                 items: [],
+                loading:true,
             }
         },
         mounted() {
-            this.getUserList();
+            this.getArticleList();
         },
         methods: {
-            getUserList() {
+            handleCurrentChange(val){
                 var _this = this;
-                console.log('woaini');
-                axios.get('users')
+                _this.getArticleList(val)
+            },
+            getArticleList(page) {
+                console.log(page);
+                var _this = this;
+                console.log(_this.form_data);
+                axios.get('/admin/articles',{
+                    params:{
+                        page:page,
+                        name:_this.form_data.name,
+                        dates:_this.form_data.dates,
+                    }
+                })
                     .then(function (response) {
-                        _this.items = response.data;
-                        console.log(_this.items);
+                        _this.items = response.data.data;
+                        _this.paginate = response.data;
+                        _this.loading=false;
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
 
             },
-            onSubmit() {
-                console.log('aaaa');
-            }
         }
     }
 </script>

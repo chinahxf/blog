@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container zl-admin-container">
+<div class="container zl-admin-container row">
     <div class="row">
-        <div class="col-md-2 zl-col-md-2">
+        <div class="col-md-2">
             @include('admin.layout.nav')
         </div>
-        <div class="col-md-10 zl-col-md-10">
+        <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 

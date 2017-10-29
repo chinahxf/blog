@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container zl-admin-container">
     <div class="row">
         <div class="col-md-2 zl-col-md-2">
             @include('admin.layout.nav')
@@ -10,5 +9,4 @@
             @yield('content_admin')
         </div>
     </div>
-</div>
 @endsection
