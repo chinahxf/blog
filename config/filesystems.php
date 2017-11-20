@@ -63,6 +63,19 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'oyl5wyjkd.bkt.clouddn.com', //你的七牛域名
+                'https'     => 'oyl5wyjkd.bkt.clouddn.com',         //你的HTTPS域名
+                'custom'    => 'oyl5wyjkd.bkt.clouddn.com',                //Useless 没啥用，请直接使用上面的 default 项
+            ],
+            'access_key'=> getenv("QN_ACCESS_KEY"),  //AccessKey
+            'secret_key'=> getenv("QN_SECRET_KEY"),  //SecretKey
+            'bucket'    => getenv("QN_BUCKET"),  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+            'access'    => 'public'  //空间访问控制 public 或 private
+        ],
     ],
 
 ];

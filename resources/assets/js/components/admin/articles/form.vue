@@ -20,9 +20,22 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-1 control-label">缩略图</label>
+            <div class="col-sm-4">
+                <a id="upLoadImg">点击上传缩略图</a>
+                <!--<input type="file" id="aaa">-->
+                <!--<el-upload
+                        class="avatar-uploader"
+                        :show-file-list="false">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <i class="el-icon-plus avatar-uploader-icon"  v-else ></i>
+                </el-upload>-->
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-1 control-label">内容</label>
             <div class="col-sm-10">
-                <script id="editor" type="text/plain" ></script>
+                <div id="editorElem" v-model="form_data.body_html" style="text-align:left"></div>
             </div>
         </div>
 
@@ -36,16 +49,18 @@
 </template>
 
 <script>
+
     export default {
         data() {
             return {
                 form_data: {
                     name: '',
                     body_html:'',
-                    body_text:''
+                    body_text:'',
+                    thumb_img:'',
+                    category_id:''
                 },
                 categories:[],
-                editor:'',
                 paginate:{},
                 items: [],
                 loading:true,
@@ -53,10 +68,10 @@
         },
         mounted() {
             this.getCategoryList();
-            this.editor=UE.getEditor('editor');
+            this.editor();
+            this.upImg();
         },
         methods: {
-
             getCategoryList() {
                 var _this = this;
                 axios.get('/common/getCategory',{
@@ -73,19 +88,20 @@
                     .catch(function (error) {
                         console.log(error);
                     });
-
             },
             save(){
+                console.log('aaa');
                 var _this = this;
-                _this.form_data.body_html=_this.editor.getContent();
-                _this.form_data.body_text=_this.editor.getContentTxt();
-
                 axios.post('/admin/articles',{
                         form_data:_this.form_data,
 
                 })
                     .then(function (response) {
-
+                        _this.$message({
+                            showClose: true,
+                            message: '添加文章成功！',
+                            type: 'success'
+                        });
                     })
                     .catch(function (error) {
                         console.log(error);

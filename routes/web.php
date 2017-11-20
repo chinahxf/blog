@@ -39,4 +39,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Common'], function () {
 
         Route::get('/getCategory', 'CommonController@getCategory');
+        Route::get('/getQiNiuToken', 'CommonController@getQiNiuToken');
 });

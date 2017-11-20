@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Common\adminBaseController;
 use App\Model\Article;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class ArticleController extends Controller
+class ArticleController extends adminBaseController
 {
     /**
      * 文章页面跳转
@@ -35,15 +35,14 @@ class ArticleController extends Controller
             $articles->whereBetween('created_at', $request->get('dates'));
         }
         $article_list = $articles->paginate(7);
-
-        return $article_list;
+//$this->sendSuccess($article_list);
+        return response()->json($article_list);
     }
     public function create(Request $request)
     {
         $data=$request->all()['form_data'];
         $result=Article::create($data);
         dd($result);
-
     }
 
 }
