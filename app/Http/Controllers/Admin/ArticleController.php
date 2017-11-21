@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Common\adminBaseController;
+use App\Http\Controllers\Common\AdminBaseController;
 use App\Model\Article;
 use Illuminate\Http\Request;
 
-class ArticleController extends adminBaseController
+class ArticleController extends AdminBaseController
 {
     /**
      * 文章页面跳转

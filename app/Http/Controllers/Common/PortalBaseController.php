@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Common;
 
-class portalBaseController extends baseController
+class PortalBaseController extends BaseController
 {
     //
 }
