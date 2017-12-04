@@ -9,7 +9,7 @@
         <div class="form-group">
             <label class="col-sm-1 control-label">类型</label>
             <div class="col-sm-4">
-                <el-select v-model="form_data.category_id" placeholder="请选择">
+                <el-select v-model="form_data.category_id" @change="changeValue"placeholder="请选择">
                     <el-option
                             v-for="category in categories"
                             :key="category.category_id"
@@ -22,6 +22,7 @@
         <div class="form-group">
             <label class="col-sm-1 control-label">缩略图</label>
             <div class="col-sm-4">
+                <img :src="form_data.thumb_img"class="img-rounded"/>
                 <a id="upLoadImg">点击上传缩略图</a>
                 <!--<input type="file" id="aaa">-->
                 <!--<el-upload
@@ -35,7 +36,11 @@
         <div class="form-group">
             <label class="col-sm-1 control-label">内容</label>
             <div class="col-sm-10">
-                <div id="editorElem" v-model="form_data.body_html" style="text-align:left"></div>
+                <div id="editorElem" v-model="form_data.body_html" style="text-align:left">
+                    <span v-html="init_html"></span>
+                    <!--{{form_data.body_html}}-->
+                    <!--{{init_html}}-->
+                </div>
             </div>
         </div>
 
@@ -45,12 +50,13 @@
             </div>
         </div>
         <pre>{{form_data}}</pre>
+        <pre>{{init_html}}</pre>
     </form>
 </template>
 
 <script>
-
     export default {
+        props:["item_id"],
         data() {
             return {
                 form_data: {
@@ -58,8 +64,10 @@
                     body_html:'',
                     body_text:'',
                     thumb_img:'',
-                    category_id:''
+                    category_id:'',
+                    category_name:''
                 },
+                init_html:'',
                 categories:[],
                 paginate:{},
                 items: [],
@@ -70,11 +78,35 @@
             this.getCategoryList();
             this.editor();
             this.upImg();
+            if(this.item_id){
+                var isEdit=true;
+                this.getArticleDetail();
+            }else{
+                var isEdit=false;
+            }
         },
         methods: {
+            getArticleDetail() {
+                var _this = this;
+                axios.get("/admin/articles/"+_this.item_id)
+                    .then(function (response) {
+                        var result=response.data;
+                        if(result.ret==0){
+                            _this.form_data=response.data.data;
+                            _this.init_html=response.data.data.body_html;
+                        }else{
+                            _this.$message.error(result.msg);
+                        }
+                        _this.loading=false;
+                        console.log(_this.items);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
             getCategoryList() {
                 var _this = this;
-                axios.get('/common/getCategory',{
+                axios.get('/common/get_category',{
                     params:{
                         type:'article'
                     }
@@ -82,30 +114,55 @@
                     .then(function (response) {
                         console.log(response);
 
-                        _this.categories = response.data;
+                        _this.categories = response.data.data;
                         _this.loading=false;
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
             },
+            //获取category的label存到数据库
+            changeValue(value) {
+                var _this=this;
+                let obj = {};
+                obj = _this.categories.find((item)=>{
+                    return item.category_id === value;
+                });
+                _this.form_data.category_name=obj.name;
+            },
             save(){
-                console.log('aaa');
                 var _this = this;
-                axios.post('/admin/articles',{
+                if(_this.item_id){
+                    axios.put('/admin/articles/'+_this.item_id,{
                         form_data:_this.form_data,
 
-                })
-                    .then(function (response) {
-                        _this.$message({
-                            showClose: true,
-                            message: '添加文章成功！',
-                            type: 'success'
-                        });
                     })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                        .then(function (response) {
+                            _this.$message({
+                                showClose: true,
+                                message: '修改文章成功！',
+                                type: 'success'
+                            });
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }else{
+                    axios.post('/admin/articles',{
+                        form_data:_this.form_data,
+
+                    })
+                        .then(function (response) {
+                            _this.$message({
+                                showClose: true,
+                                message: '添加文章成功！',
+                                type: 'success'
+                            });
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
             }
         }
     }

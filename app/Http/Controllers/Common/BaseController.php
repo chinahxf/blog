@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 
-class baseController extends Controller
+class BaseController extends Controller
 {
     public function sendResult($msg = 'ok', $ret = 0, $data = null)
     {
@@ -11,9 +11,7 @@ class baseController extends Controller
         if (!is_null($data)) {
             $r['data'] = $data;
         }
-        return response()->json($r)
-            ->header('Content-Type','application/json; charset=UTF-8')
-            ->header('X-Header-One','bbb');
+        return response()->json($r);
     }
     public function sendSuccess($data = null, $msg = 'success')
     {
@@ -21,7 +19,6 @@ class baseController extends Controller
     }
     public function sendFail($msg = 'fail', $ret = 1, $data = null)
     {
-        $this->sendResult($msg, is_null($ret) ? 1 : $ret, $data);
-        exit;
+        return $this->sendResult($msg, is_null($ret) ? 1 : $ret, $data);
     }
 }

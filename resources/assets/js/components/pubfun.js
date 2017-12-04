@@ -1,12 +1,15 @@
 exports.install = function (Vue, options) {
     Vue.prototype.editor = function (){
+        var _this=this;
         var editor = new E("#editorElem");
         editor.customConfig.onchange = (html) => {
-            this.form_data.body_html = html
-            this.form_data.body_text = html.replace(/<\/?[^>]*>/g,'');
+            _this.form_data.body_html = html
+            _this.form_data.body_text = html.replace(/<\/?[^>]*>/g,'');
         }
         editor.customConfig.qiniu = true;
         editor.create();
+        // editor.txt.clear()
+        // editor.txt.html(_this.init_html)
         uploadInit();
         function uploadInit() {
             // 获取相关 DOM 节点的 ID

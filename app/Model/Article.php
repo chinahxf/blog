@@ -8,6 +8,6 @@ class Article extends Model
 {
     protected $table="articles";
     protected $primaryKey="article_id";
-    protected $fillable=['user_id','category_id','name','body_text','body_html','browse_num'];
+    protected $fillable=['user_id','category_id','name','body_text','body_html','browse_num','category_name','thumb_img'];
 
 }

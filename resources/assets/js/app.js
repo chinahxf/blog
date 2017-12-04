@@ -39,6 +39,13 @@ Vue.component('example', require('./components/Example.vue'));
 // articles
 Vue.component('admin-article-list', require('./components/admin/articles/list.vue'));
 Vue.component('admin-article-add', require('./components/admin/articles/form.vue'));
+Vue.component('admin-article-detail', require('./components/admin/articles/detail.vue'));
+Vue.component('admin-article-edit', require('./components/admin/articles/form.vue'));
+Vue.component('admin-article-category', require('./components/admin/articles/category.vue'));
+
+//message
+Vue.component('admin-message-list', require('./components/admin/messages/list.vue'));
+Vue.component('admin-message-category', require('./components/admin/messages/category.vue'));
 
 
 
