@@ -12,12 +12,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 //测试环境
 window.moxie=require('plupload/js/moxie')
-// window.plupload=require('plupload/js/plupload.dev')
+window.plupload=require('plupload/js/plupload.dev')
 // import 'plupload/js/moxie.js'
 // import 'plupload/js/plupload.dev.js'
 // import 'qiniu-js/dist/qiniu.js'
 //正式环境
-window.plupload=require('plupload/js/plupload.full.min.js')
+// window.plupload=require('plupload/js/plupload.full.min.js')
 import 'qiniu-js/dist/qiniu.min'
 window.E=require('wangeditor')
 var pub=require('./components/pubfun')
