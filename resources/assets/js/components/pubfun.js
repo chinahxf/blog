@@ -49,16 +49,16 @@ exports.install = function (Vue, options) {
                     'FilesAdded': function(up, files) {
                         plupload.each(files, function(file) {
                             // 文件添加进队列后,处理相关的事情
-                            console.log('on FilesAdded');
+                            // console.log('on FilesAdded');
                         });
                     },
                     'BeforeUpload': function(up, file) {
                         // 每个文件上传前,处理相关的事情
-                        console.log('on BeforeUpload');
+                        // console.log('on BeforeUpload');
                     },
                     'UploadProgress': function(up, file) {
                         // 显示进度
-                        console.log('进度 ' + file.percent)
+                        // console.log('进度 ' + file.percent)
                     },
                     'FileUploaded': function(up, file, info) {
                         // 每个文件上传成功后,处理相关的事情
@@ -71,22 +71,22 @@ exports.install = function (Vue, options) {
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
                         var domain = up.getOption('domain');
-                        console.log(domain);
+                        // console.log(domain);
                         var res = new Function("return" + info.response)();
-                        console.log(res);
+                        // console.log(res);
                         var sourceLink = domain + res.key; //获取上传成功后的文件的Url
 
-                        console.log(sourceLink);
+                        // console.log(sourceLink);
                         editor.cmd.do('insertHtml', '<img src="' + sourceLink + '" style="max-width:50%;"/>')
 
                     },
                     'Error': function(up, err, errTip) {
                         //上传出错时,处理相关的事情
-                        console.log('on Error');
+                        // console.log('on Error');
                     },
                     'UploadComplete': function() {
                         //队列文件处理完毕后,处理相关的事情
-                        console.log('on UploadComplete');
+                        // console.log('on UploadComplete');
                     }
                     // Key 函数如果有需要自行配置，无特殊需要请注释
                     //,
@@ -138,16 +138,16 @@ exports.install = function (Vue, options) {
                     'FilesAdded': function(up, files) {
                         plupload.each(files, function(file) {
                             // 文件添加进队列后,处理相关的事情
-                            console.log('on FilesAdded');
+                            // console.log('on FilesAdded');
                         });
                     },
                     'BeforeUpload': function(up, file) {
                         // 每个文件上传前,处理相关的事情
-                        console.log('on BeforeUpload');
+                        // console.log('on BeforeUpload');
                     },
                     'UploadProgress': function(up, file) {
                         // 显示进度
-                        console.log('进度 ' + file.percent)
+                        // console.log('进度 ' + file.percent)
                     },
                     'FileUploaded': function(up, file, info) {
                         // 每个文件上传成功后,处理相关的事情
@@ -156,16 +156,16 @@ exports.install = function (Vue, options) {
                         //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
                         //    "key": "gogopher.jpg"
                         //  }
-                        console.log(info);
+                        // console.log(info);
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
                         var domain = up.getOption('domain');
-                        console.log(domain);
+                        // console.log(domain);
                         var res = new Function("return" + info.response)();
-                        console.log(res);
+                        // console.log(res);
                         var sourceLink = domain + res.key; //获取上传成功后的文件的Url
 
-                        console.log(sourceLink);
+                        // console.log(sourceLink);
                         // $("#upLoadImg").html(sourceLink)
                         _this.form_data.thumb_img=sourceLink;
                         // editor.cmd.do('insertHtml', '<img src="' + sourceLink + '" style="max-width:50%;"/>')
@@ -173,11 +173,11 @@ exports.install = function (Vue, options) {
                     },
                     'Error': function(up, err, errTip) {
                         //上传出错时,处理相关的事情
-                        console.log('on Error');
+                        // console.log('on Error');
                     },
                     'UploadComplete': function() {
                         //队列文件处理完毕后,处理相关的事情
-                        console.log('on UploadComplete');
+                        // console.log('on UploadComplete');
                     }
                     // Key 函数如果有需要自行配置，无特殊需要请注释
                     //,
