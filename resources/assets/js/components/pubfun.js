@@ -110,7 +110,7 @@ exports.install = function (Vue, options) {
             var uploader = Q2.uploader({
                 runtimes: 'html5,flash,html4',    //上传模式,依次退化
                 browse_button: 'upLoadImg',       //上传选择的点选按钮，**必需**
-                uptoken_url: '/common/getQiNiuToken',
+                uptoken_url: 'http://47.94.104.42/common/getQiNiuToken',
                 //Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
                 // uptoken : '<Your upload token>',
                 //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
