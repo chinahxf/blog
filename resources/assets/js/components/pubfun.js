@@ -110,9 +110,9 @@ exports.install = function (Vue, options) {
             var uploader = Q2.uploader({
                 runtimes: 'html5,flash,html4',    //上传模式,依次退化
                 browse_button: 'upLoadImg',       //上传选择的点选按钮，**必需**
-                // uptoken_url: 'http://47.94.104.42/common/getQiNiuToken',
+                uptoken_url: 'http://47.94.104.42/common/getQiNiuToken',
                 //Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
-                uptoken : ':3CRbSbBGDDc_icHh0YKYcUnR1u8=:eyJzY29wZSI6ZmFsc2UsImRlYWRsaW5lIjoxNTE1MzY4MTAyfQ==',
+                // uptoken : ':3CRbSbBGDDc_icHh0YKYcUnR1u8=:eyJzY29wZSI6ZmFsc2UsImRlYWRsaW5lIjoxNTE1MzY4MTAyfQ==',
                 //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
                 unique_names: true,
                 // 默认 false，key为文件名。若开启该选项，SDK会为每个文件自动生成key（文件名）
