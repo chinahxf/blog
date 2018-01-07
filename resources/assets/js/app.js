@@ -11,8 +11,8 @@ window.Vue = require('vue');
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 //测试环境
-window.moxie=require('plupload/js/moxie')
-window.plupload=require('plupload/js/plupload.dev')
+// window.moxie=require('plupload/js/moxie')
+// window.plupload=require('plupload/js/plupload.dev')
 // import 'plupload/js/moxie.js'
 // import 'plupload/js/plupload.dev.js'
 // import 'qiniu-js/dist/qiniu.js'
