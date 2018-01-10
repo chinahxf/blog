@@ -18,7 +18,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import 'qiniu-js/dist/qiniu.js'
 //正式环境
 // window.plupload=require('plupload/js/plupload.full.min.js')
-import 'qiniu-js/dist/qiniu.min'
+// import 'qiniu-js/dist/qiniu.min.js'
 window.E=require('wangeditor')
 var pub=require('./components/pubfun')
 Vue.use(pub)
