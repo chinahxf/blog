@@ -72,9 +72,11 @@ exports.install = function (Vue, options) {
 
                         var domain = up.getOption('domain');
                         // console.log(domain);
-                        var res = new Function("return" + info.response)();
+                        var res = $.parseJSON(String(info));
+                        var sourceLink = domain +"/"+ res.key;
+                        // var res = new Function("return" + info.response)();
                         console.log(res);
-                        var sourceLink = domain + res.key; //获取上传成功后的文件的Url
+                        // var sourceLink = domain + res.key; //获取上传成功后的文件的Url
 
                         // console.log(sourceLink);
                         editor.cmd.do('insertHtml', '<img src="' + sourceLink + '" style="max-width:50%;"/>')
@@ -160,8 +162,6 @@ exports.install = function (Vue, options) {
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
                         var domain = up.getOption('domain');
-                        console.log(domain);
-                        console.log();
                         var res = $.parseJSON(String(info));
                         var sourceLink = domain +"/"+ res.key; //获取上传成功后的文件的Url
                         // var res = new Function("return" + info.response)();
