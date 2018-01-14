@@ -13,9 +13,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin/admin.css') }}" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>
-    <script src="https://cdn.staticfile.org/qiniu-js-sdk/1.0.14-beta/qiniu.min.js"></script>
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    {{--<script src="https://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>--}}
+    {{--<script src="https://cdn.staticfile.org/qiniu-js-sdk/1.0.14-beta/qiniu.min.js"></script>--}}
+    {{--<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>--}}
     <style>
         html,body{
             font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
@@ -82,7 +82,9 @@
 
         @yield('content')
     </div>
-
+    <script src="{{asset('plugin/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('plugin/plupload.full.min.js')}}"></script>
+    <script src="{{asset('plugin/qiniu.min.js')}}"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

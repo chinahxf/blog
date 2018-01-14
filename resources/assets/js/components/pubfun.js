@@ -72,7 +72,7 @@ exports.install = function (Vue, options) {
 
                         var domain = up.getOption('domain');
                         // console.log(domain);
-                        var res = $.parseJSON(String(info));
+                        var res = $.parseJSON(info.response);
                         var sourceLink = domain +"/"+ res.key;
                         // var res = new Function("return" + info.response)();
                         console.log(res);
@@ -162,7 +162,7 @@ exports.install = function (Vue, options) {
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
                         var domain = up.getOption('domain');
-                        var res = $.parseJSON(String(info));
+                        var res = $.parseJSON(info.response);
                         var sourceLink = domain +"/"+ res.key; //获取上传成功后的文件的Url
                         // var res = new Function("return" + info.response)();
                         console.log(res);
