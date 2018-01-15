@@ -82,7 +82,7 @@
 
         @yield('content')
     </div>
-    <script src="{{asset('plugin/jquery-3.2.1.min.js')}}"></script>
+    {{--<script src="{{asset('plugin/jquery-3.2.1.min.js')}}"></script>--}}
     <script src="{{asset('plugin/plupload.full.min.js')}}"></script>
     <script src="{{asset('plugin/qiniu.min.js')}}"></script>
     <!-- Scripts -->
