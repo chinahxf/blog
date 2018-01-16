@@ -86,6 +86,8 @@
     <script src="{{asset('plugin/plupload.full.min.js')}}"></script>
     <script src="{{asset('plugin/qiniu.min.js')}}"></script>
     <!-- Scripts -->
+    <script src="{{ asset('/js/manifest.js') }}"></script>
+    <script src="{{ asset('/js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
