@@ -12,5 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .extract(['vue','element-ui','wangeditor','axios','jquery'])
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    // .extract(['vue','wangeditor','axios','jquery'])
+   .sass('resources/assets/sass/app.scss', 'public/css')
+/*    .webpackConfig({
+        output: {
+            filename: 'app.js',
+            path: '/home/proj/public/assets'
+        }
+})*/;
