@@ -12,6 +12,6 @@ class Article extends Model
 
     public function getBodyTextAttribute($value)
     {
-        return e(str_limit($value,60)."...");
+        return str_limit(e($value),150);
     }
 }
