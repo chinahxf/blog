@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route("portal");
 });
 
 Auth::routes();
@@ -55,4 +55,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Comm
         Route::get('/get_category', 'CommonController@getCategory');
         Route::post('/add_category', 'CommonController@storeCategory');
         Route::get('/getQiNiuToken', 'CommonController@getQiNiuToken');
+});
+Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
+    Route::get('/', 'HomepageController@index')->name('portal');
 });
