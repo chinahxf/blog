@@ -10,4 +10,8 @@ class Article extends Model
     protected $primaryKey="article_id";
     protected $fillable=['user_id','category_id','name','body_text','body_html','browse_num','category_name','thumb_img'];
 
+    public function getBodyTextAttribute($value)
+    {
+        return e(str_limit($value,60)."...");
+    }
 }
