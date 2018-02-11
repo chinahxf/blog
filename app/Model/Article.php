@@ -14,4 +14,8 @@ class Article extends Model
     {
         return str_limit($value,150);
     }
+    public function messages()
+    {
+        return $this->hasMany('App\Model\Message',"article_id","article_id");
+    }
 }

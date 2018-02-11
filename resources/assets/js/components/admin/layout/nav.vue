@@ -25,7 +25,7 @@
                         <span>留言模块</span>
                     </template>
                     <el-menu-item-group>
-                        <a href="/admin/articles/get_article_list"><el-menu-item index="1-1">留言管理</el-menu-item></a>
+                        <a href="/admin/messages/get_message_list"><el-menu-item index="1-1">留言管理</el-menu-item></a>
                         <a href="/admin/messages/category"><el-menu-item index="1-2">留言分类</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>

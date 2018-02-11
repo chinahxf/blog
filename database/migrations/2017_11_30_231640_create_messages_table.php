@@ -19,7 +19,9 @@ class CreateMessagesTable extends Migration
             $table->integer('category_id')->nullable();
             $table->string('category_name')->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('to_user_id')->nullable();
             $table->string('body_text')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

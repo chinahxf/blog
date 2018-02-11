@@ -13,27 +13,14 @@ class ArticleSeederTable extends Seeder
     {
 
         DB::table('articles')->insert([
-            'name' => '文章名1',
             'user_id' => 1,
+            'category_id' => 1,
+            'category_name' => "学习",
+            'name' => '文章名1',
+            'thumb_img' => "http://oyl5wyjkd.bkt.clouddn.com//o_1c5b9b53fnso2311vavs00ekeg.jpg",
             'body_text' => '哈喽呀1',
             'body_html' => '哈喽呀1',
             'browse_num' => 78934,
         ]);
-        DB::table('articles')->insert([
-            'name' => '文章名2',
-            'user_id' => 1,
-            'body_text' => '哈喽呀1',
-            'body_html' => '哈喽呀2',
-            'browse_num' => 623225234,
-        ]);
-        DB::table('articles')->insert([
-            'name' => '文章名3',
-            'user_id' => 1,
-            'body_text' => '哈喽呀1',
-            'body_html' => '哈喽呀3',
-            'browse_num' => 425234,
-        ]);
-
-
     }
 }

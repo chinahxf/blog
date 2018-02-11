@@ -58,4 +58,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Comm
 });
 Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
     Route::get('/', 'HomepageController@index')->name('portal');
+    Route::group(['prefix' => 'articles'], function () {
+        Route::get('/list', 'ArticleController@list');
+        Route::get('/info', 'ArticleController@info');
+    });
 });

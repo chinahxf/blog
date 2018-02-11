@@ -3,32 +3,21 @@
     <!-- First Container -->
     <div class="container-fluid bg-1 text-center">
         <h3 class="margin">koala</h3>
-        <img src="{{asset("/images/homepage_head.jpg")}}" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350"
+        <img src="{{asset("/images/homepage_head.jpg")}}" class="img-responsive img-circle margin"
+             style="display:inline" alt="Bird" width="350"
              height="350">
-        <h3>如果不是为了生存！</h3>
+        <h3>为爱打拼！</h3>
     </div>
 
     <!-- Second Container -->
     <div class="container-fluid bg-2 text-center">
-        <div class="row">
-            <div class="col-sm-3">
-                <h2>浏览人数</h2>
-                <h3>234235</h3>
-            </div>
-            <div class="col-sm-3">
-                <h2>注册人数</h2>
-                <h3>234235</h3>
-            </div>
-            <div class="col-sm-3">
-                <h2>点赞人数</h2>
-                <h3>234235</h3>
-            </div>
-            <div class="col-sm-3">
-                <h2>分享人数</h2>
-                <h3>234235</h3>
-            </div>
-
-        </div>
+        <h3 class="margin">What Am I?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. </p>
+        <a href="#" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-search"></span> Search
+        </a>
     </div>
 
     <!-- Third Container (Grid) -->
@@ -38,10 +27,12 @@
             @forelse($articles as $article)
                 <div class="col-sm-4">
                     <p>{{$article->body_text}}</p>
-                    <img src="{{$article->thumb_img}}?imageMogr2/gravity/Center/crop/300x350" class="img-responsive margin" style="width:100%" alt="Image">
+                    <img src="{{$article->thumb_img}}?imageMogr2/gravity/Center/crop/300x350"
+                         class="img-responsive margin" style="width:100%" alt="Image">
                 </div>
-                @empty
-                @endforelse
+            @empty
+            @endforelse
         </div>
     </div>
 @endsection
+
