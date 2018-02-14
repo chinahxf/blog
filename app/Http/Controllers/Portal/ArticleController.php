@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Http\Controllers\Common\PortalBaseController;
+use App\Mail\CommentSendMail;
 use App\Model\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends PortalBaseController
 {
     public function list()
     {
+//        Mail::to("894847066@qq.com")->send(new CommentSendMail());
         $list = Article::paginate(15);
 //dd($list);
         return view("portal.articles.list",compact('list'));
