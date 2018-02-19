@@ -13,7 +13,9 @@ class ArticleController extends PortalBaseController
 {
     public function list()
     {
-//        Mail::to("894847066@qq.com")->send(new CommentSendMail());
+
+//        $message = (new CommentSendMail())->onQueue("email");
+//        Mail::to("894847066@qq.com")->queue($message);
         $list = Article::paginate(15);
 //dd($list);
         return view("portal.articles.list",compact('list'));
