@@ -62,4 +62,8 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
         Route::get('/list', 'ArticleController@list');
         Route::get('/info', 'ArticleController@info');
     });
+    Route::group(['prefix' => 'message'], function () {
+        Route::get('/list', 'MessageController@index');
+    });
+
 });

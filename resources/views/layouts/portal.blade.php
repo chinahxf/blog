@@ -17,9 +17,13 @@
 
 </head>
 <body>
+<div id="app">
         @yield('content')
-    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="//ajax.googleapis.bootcss.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</div>
+@yield('portal_script')
 </body>
 </html>
