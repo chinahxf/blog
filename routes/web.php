@@ -56,8 +56,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Comm
         Route::post('/add_category', 'CommonController@storeCategory');
         Route::get('/getQiNiuToken', 'CommonController@getQiNiuToken');
 });
-Route::redirect('/', '/portal', 301);
-Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
+Route::group(['prefix' => 'portal', 'namespace' => 'portal'], function () {
     Route::get('/', 'HomepageController@index')->name('portal');
     Route::group(['prefix' => 'articles'], function () {
         Route::get('/list', 'ArticleController@list');
@@ -66,5 +65,10 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
     Route::group(['prefix' => 'message'], function () {
         Route::get('/list', 'MessageController@index');
     });
+
+});
+Route::group(['prefix' => 'wechat', 'namespace' => 'wechat'], function () {
+    Route::get('/', 'WechatController@index');
+
 
 });
