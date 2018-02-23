@@ -23,11 +23,11 @@ class WechatController extends BaseController
             echo $echostr;
             exit;
         }else{
-            $this->reponseMsg($request);
+            $this->reponseMsg();
         }
     }
 
-    public function reponseMsg($request)
+    public function reponseMsg(Request $request)
     {
         $postXml = $request->get("HTTP_RAW_POST_DATA");
 //        ToUserName	开发者微信号
