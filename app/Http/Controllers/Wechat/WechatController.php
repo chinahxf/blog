@@ -19,9 +19,49 @@ class WechatController extends BaseController
         sort($wechat_arr);
         $tmpstr = join("", $wechat_arr);
         $tmpstr = sha1($tmpstr);
-        if ($tmpstr == $signature) {
+        if ($tmpstr == $signature && $echostr) {
             echo $echostr;
             exit;
+        }else{
+            $this->reponseMsg($request);
         }
+    }
+
+    public function reponseMsg($request)
+    {
+        $postXml = $request->get("HTTP_RAW_POST_DATA");
+//        ToUserName	开发者微信号
+//FromUserName	发送方帐号（一个OpenID）
+//CreateTime	消息创建时间 （整型）
+//MsgType	消息类型，event
+//Event	事件类型，subscribe(订阅)、unsubscribe(取消订阅)
+        $postObj = simplexml_load_string($postXml);
+        if (strtolower($postObj->MsgType) == "event") {
+            if (strtolower($postObj->Event) == "subscribe") {
+//ToUserName	是	接收方帐号（收到的OpenID）
+//FromUserName	是	开发者微信号
+//CreateTime	是	消息创建时间 （整型）
+//MsgType	是	text
+//Content	是	回复的消息内容（换行：在content中能够换行，微信客户端就支持换行显示）
+
+                $fromUserName = $postObj->ToUserName;
+                $toUserName = $postObj->FromUserName;
+                $createTime = time();
+                $msgType = "text";
+                $content = "敌军还有30秒抵达战场，请做好准备！";
+                $template = "<xml>
+                                <ToUserName>< ![CDATA[%s] ]></ToUserName> 
+                                <FromUserName>< ![CDATA[%s] ]></FromUserName> 
+                                <CreateTime>%s</CreateTime> 
+                                <MsgType>< ![CDATA[%s] ]></MsgType> 
+                                <Content>< ![CDATA[%s] ]></Content> 
+                              </xml>";
+                $info = sprintf($template,$toUserName,$fromUserName,$createTime,$msgType,$content);
+                echo $info;
+            } else {
+
+            }
+        }
+
     }
 }
