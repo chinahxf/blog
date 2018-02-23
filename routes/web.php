@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Comm
         Route::post('/add_category', 'CommonController@storeCategory');
         Route::get('/getQiNiuToken', 'CommonController@getQiNiuToken');
 });
+Route::redirect('/', '/portal', 301);
 Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
     Route::get('/', 'HomepageController@index')->name('portal');
     Route::group(['prefix' => 'articles'], function () {
