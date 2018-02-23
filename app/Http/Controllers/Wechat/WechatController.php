@@ -27,9 +27,9 @@ class WechatController extends BaseController
         }
     }
 
-    public function reponseMsg(Request $request)
+    public function reponseMsg()
     {
-        $postXml = $request->get("HTTP_RAW_POST_DATA");
+        $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
 //        ToUserName	开发者微信号
 //FromUserName	发送方帐号（一个OpenID）
 //CreateTime	消息创建时间 （整型）
