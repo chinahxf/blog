@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wechat;
 use App\Http\Controllers\Common\BaseController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class WechatController extends BaseController
 {
@@ -30,6 +31,7 @@ class WechatController extends BaseController
     public function reponseMsg()
     {
         $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
+        Log::info($postXml);
 //        ToUserName	开发者微信号
 //FromUserName	发送方帐号（一个OpenID）
 //CreateTime	消息创建时间 （整型）
