@@ -30,6 +30,7 @@ class WechatController extends BaseController
 
     public function reponseMsg()
     {
+        Log::info("aaaaa");
         $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
         Log::info($postXml);
 //        ToUserName	开发者微信号
