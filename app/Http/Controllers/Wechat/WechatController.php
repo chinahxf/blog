@@ -35,14 +35,15 @@ class WechatController extends BaseController
     public function reponseMsg()
     {
         Log::info("aaaaa");
-        $postXml = $GLOBALS("HTTP_RAW_POST_DATA");
-        Log::info($postXml);
+        $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
+
 //        ToUserName	开发者微信号
 //FromUserName	发送方帐号（一个OpenID）
 //CreateTime	消息创建时间 （整型）
 //MsgType	消息类型，event
 //Event	事件类型，subscribe(订阅)、unsubscribe(取消订阅)
         $postObj = simplexml_load_string($postXml);
+        Log::info($postObj);
         if (strtolower($postObj->MsgType) == "event") {
             if (strtolower($postObj->Event) == "subscribe") {
 //ToUserName	是	接收方帐号（收到的OpenID）
