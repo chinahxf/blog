@@ -68,7 +68,7 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
 
 });
 Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {
-    Route::get('/', 'WechatController@index');
+    Route::match(["get","post"],'/', 'WechatController@index');
 
 
 });
