@@ -35,7 +35,7 @@ class WechatController extends BaseController
     public function reponseMsg()
     {
         Log::info("aaaaa");
-        $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
+        $postXml = Request::input["HTTP_RAW_POST_DATA"];
         Log::info($postXml);
 //        ToUserName	开发者微信号
 //FromUserName	发送方帐号（一个OpenID）
