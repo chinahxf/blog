@@ -7,13 +7,14 @@ use App\Mail\CommentSendMail;
 use App\Model\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends PortalBaseController
 {
     public function list()
     {
-
+Log::info("aaa");
 //        $message = (new CommentSendMail())->onQueue("email");
 //        Mail::to("894847066@qq.com")->queue($message);
         $list = Article::paginate(15);
