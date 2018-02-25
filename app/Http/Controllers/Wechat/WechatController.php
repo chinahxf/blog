@@ -35,7 +35,8 @@ class WechatController extends BaseController
     public function reponseMsg()
     {
         Log::info("aaaaa");
-        $postXml = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
+        $postXml = $GLOBALS['HTTP_RAW_POST_DATA'];
+//        $postXml = isset($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
 
 //        ToUserName	开发者微信号
 //FromUserName	发送方帐号（一个OpenID）
@@ -44,6 +45,7 @@ class WechatController extends BaseController
 //Event	事件类型，subscribe(订阅)、unsubscribe(取消订阅)
         Log::info($postXml);
         $postObj = simplexml_load_string($postXml);
+        Log::info($postObj);
         if (strtolower($postObj->MsgType) == "event") {
             if (strtolower($postObj->Event) == "subscribe") {
 //ToUserName	是	接收方帐号（收到的OpenID）
