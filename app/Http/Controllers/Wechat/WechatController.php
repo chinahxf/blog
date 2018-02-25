@@ -42,8 +42,8 @@ class WechatController extends BaseController
 //CreateTime	消息创建时间 （整型）
 //MsgType	消息类型，event
 //Event	事件类型，subscribe(订阅)、unsubscribe(取消订阅)
+        Log::info($postXml);
         $postObj = simplexml_load_string($postXml);
-        Log::info($postObj);
         if (strtolower($postObj->MsgType) == "event") {
             if (strtolower($postObj->Event) == "subscribe") {
 //ToUserName	是	接收方帐号（收到的OpenID）
