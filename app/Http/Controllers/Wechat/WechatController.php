@@ -20,6 +20,10 @@ class WechatController extends BaseController
         sort($wechat_arr);
         $tmpstr = join("", $wechat_arr);
         $tmpstr = sha1($tmpstr);
+        Log::info($tmpstr);
+        Log::info($signature);
+        Log::info($echostr);
+        Log::info($tmpstr == $signature && $echostr);
         if ($tmpstr == $signature && $echostr) {
             Log::info($echostr);
             Log::info("第一次验证");
