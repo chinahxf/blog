@@ -1,61 +1,18 @@
-body {
-    font-size: 14px;
-    font-family:"Microsoft YaHei","Helvetica Neue";
-    line-height: 1.8;
-    color: #555555;
-    background-color: #ffffff;
+/*去除下间距*/
+.zl-clean-mg-d{
+    margin-bottom:0px;
 }
-p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
-.bg-1 {
-    background-color: #1abc9c; /* Green */
-    color: #ffffff;
+/*评论的时间样式*/
+.zl-common-foot{
+    display: block;
+    font-size: 80%;
+    color: #6c757d;
 }
-.bg-2 {
-    background-color: #474e5d; /* Dark Blue */
-    color: #ffffff;
+/*评论框默认消失*/
+.zl-common-text{
+    display: none;
 }
-.bg-3 {
-    background-color: #f5f5f5;
-    color: #555555;
-}
-.bg-4 {
-    background-color: #2f2f2f; /* Black Gray */
-    color: #fff;
+.zl-common-button{
+    margin-top:10px;
 }
 
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
-}
-.navbar {
-/*    padding-top: 15px;
-    padding-bottom: 15px;*/
-    border: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    font-size: 14px;
-    letter-spacing: 5px;
-}
-/*.navbar-nav  li a:hover {
-    color: #1abc9c !important;
-}*/
-.zl-portal-article-list{
-    /*background-color: #e7e7e7;*/
-    border:0px;
-    box-shadow:0 0 10px #999;
-    min-height:150px;
-    background-color: #ffffff;
-    color: #555555;
-    margin-top:20px;
-}
-.zl-portal-article-list a{
-    color: #000;
-}
-.zl-portal-comment-head{
-    width:60px;
-    height:60px;
-}
-.zl-media-comment p{
-    font-size:14px;
-}

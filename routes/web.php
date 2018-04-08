@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('is_admin','auth');
 
-Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 //    index
     Route::get('/', 'HomeController@index');
 
@@ -64,6 +64,7 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
     });
     Route::group(['prefix' => 'message'], function () {
         Route::get('/list', 'MessageController@index');
+        Route::post('/', 'MessageController@store')->middleware("auth_json");
     });
 
 });

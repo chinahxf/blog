@@ -1,4 +1,7 @@
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-    <p>Bootstrap Theme Made By <a href="../default.html">www.w3schools.com</a></p>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
 </footer>

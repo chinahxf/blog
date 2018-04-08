@@ -18,4 +18,8 @@ class Article extends Model
     {
         return $this->hasMany('App\Model\Message',"article_id","article_id");
     }
+    public function users()
+    {
+        return $this->belongsTo('App\User',"user_id","id");
+    }
 }

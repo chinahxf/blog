@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portal;
 use App\Http\Controllers\Common\PortalBaseController;
 use App\Mail\CommentSendMail;
 use App\Model\Article;
+use App\Model\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
@@ -12,12 +13,16 @@ use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends PortalBaseController
 {
-    public function list()
+    public function list(Request $request)
     {
-Log::info("aaa");
+        $query = Article::query();
+        if ($category_id= $request->input("category_id")){
+            $query->where("category_id",$category_id);
+        }
+//Log::info("aaa");
 //        $message = (new CommentSendMail())->onQueue("email");
 //        Mail::to("894847066@qq.com")->queue($message);
-        $list = Article::paginate(15);
+        $list = $query->paginate(15);
 //dd($list);
         return view("portal.articles.list",compact('list'));
     }
@@ -29,6 +34,7 @@ Log::info("aaa");
         }
         $info = Article::find($id);
         $message_all = $info->messages()->get();
+        $messages=[];
         foreach($message_all as $item){
             if ($item->parent_id==""){
                 $childrens=[];
@@ -43,7 +49,7 @@ Log::info("aaa");
                 $item->children=$childrens;
                 $item->user_name=$item->fromUsers->name??"";
 //                $item->to_user_name=$item->toUsers->name??"";
-                $item->children=$childrens;
+//                $item->children=$childrens;
                 $messages[]=$item;
             }
         }

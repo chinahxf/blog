@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('is_ad_hxf')->default(0);
+            $table->string('login_ip')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,8 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->setTrustedProxies(["192.168.10.1",'192.168.0.1','192.168.10.10']);
+        dd($request->getClientIp());
         return view('admin.index');
     }
 }

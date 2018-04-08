@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -32,8 +34,18 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         $this->middleware('guest')->except('logout');
+    }
+    public function redirectTo()
+    {
+        $user = Auth::user();
+        $this->request->setTrustedProxies(['192.168.10.1','192.168.0.1']);
+        $user->login_ip = $this->request->getClientIp();
+        dd($user->login_ip);
+        $user->save();
+        return "/admin";
     }
 }

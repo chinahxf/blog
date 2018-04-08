@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
+<head>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Modern Business - Start Bootstrap Template</title>
 
-    <!-- Styles -->
-    <link href="//maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{{asset('css/portal/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/portal/modern-business.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/portal.css')}}" rel="stylesheet">
+    @yield('portal_style')
+    {{--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
+
+    <!-- Custom styles for this template -->
+    {{--<link href="css/modern-business.css" rel="stylesheet">--}}
+
 
 </head>
-<body>
-<div id="app">
-        @yield('content')
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="//ajax.googleapis.bootcss.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-</div>
+<body>
+@yield('content')
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @yield('portal_script')
 </body>
+
 </html>
+

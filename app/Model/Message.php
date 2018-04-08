@@ -8,7 +8,7 @@ class Message extends Model
 {
     protected $table="messages";
     protected $primaryKey="message_id";
-    protected $fillable=[];
+    protected $fillable=["article_id","category_id","category_name","user_id","to_user_id","body_text","parent_id"];
 
     public function toUsers()
     {
