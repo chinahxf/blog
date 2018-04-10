@@ -42,9 +42,8 @@ class LoginController extends Controller
     public function redirectTo()
     {
         $user = Auth::user();
-        $this->request->setTrustedProxies(['192.168.10.1','192.168.0.1']);
+//        $this->request->setTrustedProxies(['192.168.10.1','192.168.0.1']);
         $user->login_ip = $this->request->getClientIp();
-        dd($user->login_ip);
         $user->save();
         return "/admin";
     }
