@@ -68,4 +68,12 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    public function redirectTo()
+    {
+        $user = Auth::user();
+//        $this->request->setTrustedProxies(['192.168.10.1','192.168.0.1']);
+        $user->login_ip = $this->request->getClientIp();
+        $user->save();
+        return "/admin";
+    }
 }
