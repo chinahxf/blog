@@ -80,7 +80,7 @@
                 <!-- Date/Time -->
                 <p>
                     作者：{{$info->user_id}}
-                    修改时间：{{$info->updated_at}}
+                    创建时间：{{$info->created_at}}
                     浏览量：{{$info->browse_num}}
                     文章类型：{{$info->category_name}}
 

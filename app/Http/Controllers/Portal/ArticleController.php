@@ -6,8 +6,11 @@ use App\Http\Controllers\Common\PortalBaseController;
 use App\Mail\CommentSendMail;
 use App\Model\Article;
 use App\Model\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -33,8 +36,27 @@ class ArticleController extends PortalBaseController
             abort(404);
         }
         $info = Article::find($id);
+
+            $ip = $request->getClientIp();
+            $ip_key = "A_B_N".str_replace(".","",$ip);
+            if (Cache::has($ip_key)){
+                $value = Cache::get($ip_key);
+                if ($value && !in_array($id, $value)) {
+                    $value[] = $id;
+                    $info->browse_num = $info->browse_num + 1;
+                    $info->save();
+                }
+            } else {
+                $value[] = $id;
+                $info->browse_num = $info->browse_num + 1;
+                $info->save();
+            }
+        if ($value != Cache::get($ip_key)) {
+            Cache::put($ip_key, $value, 1);
+        }
+
         $message_all = $info->messages()->get();
-        $messages=[];
+        $messages = [];
         foreach($message_all as $item){
             if ($item->parent_id==""){
                 $childrens=[];
