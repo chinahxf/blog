@@ -66,6 +66,10 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
         Route::get('/list', 'MessageController@index');
         Route::post('/', 'MessageController@store')->middleware("auth_json");
     });
+    Route::group(['prefix' => 'friends'], function () {
+        Route::get('/create', 'FriendController@create');
+        Route::post('/', 'FriendController@store');
+    });
 
 });
 Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {

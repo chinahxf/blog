@@ -1,18 +1,58 @@
-/*去除下间距*/
-.zl-clean-mg-d{
-    margin-bottom:0px;
+body {
+    color: #333333;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
 }
+
+.zl-nav {
+    /*background-color: #4bb547;*/
+    padding: 2px 0 2px 0;
+    /*border-bottom:0px solid red;*/
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+}
+
+.zl-article-list-header {
+    background-color: #FFFFFF;
+    margin-bottom: 0px;
+    /*border-bottom:1px solid rgba(0,0,0,0.5);*/
+    /*border-radius:0px ;*/
+}
+.zl-article-list-title{
+    color: #1e8131;
+}
+.zl-article-list-button{
+    background-color: #a3d65c;
+}
+
+/*去除下间距*/
+.zl-clean-mg-d {
+    margin-bottom: 0px;
+}
+
+.zl-nav-font {
+    color: #333333;
+}
+
+.zl-nav-font:hover {
+    color: #ff6600;
+    border-bottom: 2px solid #ff6600;
+}
+
+/*文章详情页*/
+
 /*评论的时间样式*/
-.zl-common-foot{
+.zl-common-foot {
     display: block;
     font-size: 80%;
     color: #6c757d;
 }
+
 /*评论框默认消失*/
-.zl-common-text{
+.zl-common-text {
     display: none;
 }
-.zl-common-button{
-    margin-top:10px;
+
+.zl-common-button {
+    margin-top: 10px;
 }
 

@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -49,12 +50,40 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+//        if($exception instanceof ValidationException) {
+//            $result = [
+//                "msg"    => "",
+//                "data"   => $exception->getMessage(),
+//                "status" => 0
+//            ];
+//            return $request->expectsJson()
+//                ? response()->json($result)
+//                : $this->invalid($request, $exception);
+//        }
         return parent::render($request, $exception);
     }
+
+//    // 新添加的handle函数
+//    public function handle($request, Exception $e){
+//        // 只处理自定义的APIException异常
+//
+//        return parent::render($request, $e);
+//    }
+
 //    protected function unauthenticated($request, AuthenticationException $exception)
 //    {
 //        return $request->expectsJson()
 //            ? response()->json(['message' => $exception->getMessage()], 401)
 //            : redirect()->guest(route('portal'));
 //    }
+protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+{
+            $result = [
+                "ret" => 1,
+                "msg"    => current($e->errors())[0],
+            ];
+            return $request->expectsJson()
+                ? response()->json($result)
+                : $this->invalid($request, $e);
+}
 }

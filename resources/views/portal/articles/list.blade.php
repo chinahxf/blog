@@ -3,16 +3,12 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3">Blog Home Two
-            <small>Subheading</small>
-        </h1>
-
-        <ol class="breadcrumb">
+        <ol class="breadcrumb zl-article-list-header">
+            <li class="breadcrumb-item">当前位置:</li>
             <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="{{url('/')}}">首页</a>
             </li>
-            <li class="breadcrumb-item active">Blog Home 2</li>
+            <li class="breadcrumb-item active">生活</li>
         </ol>
     @foreach($list as $item)
         <!-- Blog Post -->
@@ -25,9 +21,9 @@
                             </a>
                         </div>
                         <div class="col-lg-6">
-                            <h2 class="card-title">{{$item->name}}</h2>
+                            <h4 class="card-title zl-article-list-title">{{$item->name}}</h4>
                             <p class="card-text">{{$item->body_text}}</p>
-                            <a href="#" class="btn btn-primary">查看详情&rarr;</a>
+                            <a href="#" class="btn btn-success">查看详情&rarr;</a>
                         </div>
                     </div>
                 </div>
