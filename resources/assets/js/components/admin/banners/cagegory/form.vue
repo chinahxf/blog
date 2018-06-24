@@ -1,29 +1,16 @@
 <template>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-1 control-label">标题</label>
+            <label class="col-sm-1 control-label">banner名称</label>
             <div class="col-sm-4">
                 <el-input v-model="form_data.name"></el-input>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">类型</label>
-            <div class="col-sm-4">
-                <el-select v-model="form_data.category_id" placeholder="请选择">
-                    <el-option
-                            v-for="category in categories"
-                            :key="category.category_id"
-                            :label="category.name"
-                            :value="category.category_id">
-                    </el-option>
-                </el-select>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-1 control-label">缩略图</label>
             <div class="col-sm-4">
-                <img :src="form_data.thumb_img"class="img-rounded"/>
-                <a id="upLoadImg">点击上传缩略图</a>
+                <img :src="form_data.url"class="img-rounded"/>
+                <a id="upLoadImg">点击上传banner图</a>
                 <!--<input type="file" id="aaa">-->
                 <!--<el-upload
                         class="avatar-uploader"
@@ -34,13 +21,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">内容</label>
-            <div class="col-sm-10">
-                <div id="editorElem" v-model="form_data.body_html" style="text-align:left">
-                    <span v-html="init_html"></span>
-                    <!--{{form_data.body_html}}-->
-                    <!--{{init_html}}-->
-                </div>
+            <label class="col-sm-1 control-label">banner跳转地址</label>
+            <div class="col-sm-4">
+                <el-input v-model="form_data.to_url"></el-input>
             </div>
         </div>
 
@@ -50,44 +33,34 @@
             </div>
         </div>
         <pre>{{form_data}}</pre>
-        <pre>{{init_html}}</pre>
     </form>
 </template>
 
 <script>
     export default {
-        props:["item_id"],
+        props:["item_id","category_id"],
         data() {
             return {
                 form_data: {
                     name: '',
-                    body_html:'',
-                    body_text:'',
-                    thumb_img:'',
-                    category_id:'',
                 },
-                init_html:'',
-                categories:[],
-                paginate:{},
                 items: [],
                 loading:true,
             }
         },
         mounted() {
-            this.getCategoryList();
-            this.editor();
             this.upImg();
             if(this.item_id){
                 var isEdit=true;
-                this.getArticleDetail();
+                this.getBannerDetail();
             }else{
                 var isEdit=false;
             }
         },
         methods: {
-            getArticleDetail() {
+            getBannerDetail() {
                 var _this = this;
-                axios.get("/admin/articles/"+_this.item_id)
+                axios.get("/admin/banners/"+_this.item_id)
                     .then(function (response) {
                         var result=response.data;
                         if(result.ret==0){
@@ -98,23 +71,6 @@
                         }
                         _this.loading=false;
                         console.log(_this.items);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-            getCategoryList() {
-                var _this = this;
-                axios.get('/common/get_category',{
-                    params:{
-                        type:'article'
-                    }
-                })
-                    .then(function (response) {
-                        console.log(response);
-
-                        _this.categories = response.data.data;
-                        _this.loading=false;
                     })
                     .catch(function (error) {
                         console.log(error);

@@ -17,7 +17,6 @@ class CreateArticlesTable extends Migration
             $table->increments('article_id');
             $table->integer('user_id')->default(1);
             $table->integer('category_id')->nullable();
-            $table->string('category_name')->nullable();
             $table->string('name')->nullable();
             $table->string('thumb_img')->nullable();
             $table->text('body_text')->nullable();

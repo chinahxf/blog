@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 
 class BaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->limit=15;
+    }
     public function sendResult($msg = 'ok', $ret = 0, $data = null)
     {
         $r = compact('ret', 'msg');

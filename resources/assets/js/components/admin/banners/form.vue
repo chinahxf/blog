@@ -1,29 +1,16 @@
 <template>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-1 control-label">标题</label>
+            <label class="col-sm-1 control-label">banner名称</label>
             <div class="col-sm-4">
                 <el-input v-model="form_data.name"></el-input>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">类型</label>
-            <div class="col-sm-4">
-                <el-select v-model="form_data.category_id" placeholder="请选择">
-                    <el-option
-                            v-for="category in categories"
-                            :key="category.category_id"
-                            :label="category.name"
-                            :value="category.category_id">
-                    </el-option>
-                </el-select>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-1 control-label">缩略图</label>
             <div class="col-sm-4">
-                <img :src="form_data.thumb_img"class="img-rounded"/>
-                <a id="upLoadImg">点击上传缩略图</a>
+                <img v-if="form_data.url" :src="form_data.url+'?imageView2/1/w/750/h/300'"class="img-rounded"/>
+                <a id="upLoadImg">点击上传banner图</a>
                 <!--<input type="file" id="aaa">-->
                 <!--<el-upload
                         class="avatar-uploader"
@@ -34,13 +21,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">内容</label>
-            <div class="col-sm-10">
-                <div id="editorElem" v-model="form_data.body_html" style="text-align:left">
-                    <span v-html="init_html"></span>
-                    <!--{{form_data.body_html}}-->
-                    <!--{{init_html}}-->
-                </div>
+            <label class="col-sm-1 control-label">banner跳转地址</label>
+            <div class="col-sm-4">
+                <el-input v-model="form_data.to_url"></el-input>
             </div>
         </div>
 
@@ -50,49 +33,36 @@
             </div>
         </div>
         <pre>{{form_data}}</pre>
-        <pre>{{init_html}}</pre>
     </form>
 </template>
 
 <script>
     export default {
-        props:["item_id"],
+        props:["item_id","category_id"],
         data() {
             return {
                 form_data: {
                     name: '',
-                    body_html:'',
-                    body_text:'',
-                    thumb_img:'',
-                    category_id:'',
+                    url:'',
                 },
-                init_html:'',
-                categories:[],
-                paginate:{},
                 items: [],
                 loading:true,
             }
         },
         mounted() {
-            this.getCategoryList();
-            this.editor();
             this.upImg();
             if(this.item_id){
-                var isEdit=true;
-                this.getArticleDetail();
-            }else{
-                var isEdit=false;
+                this.getBannerDetail();
             }
         },
         methods: {
-            getArticleDetail() {
+            getBannerDetail() {
                 var _this = this;
-                axios.get("/admin/articles/"+_this.item_id)
+                axios.get("/admin/banners/"+_this.item_id)
                     .then(function (response) {
                         var result=response.data;
                         if(result.ret==0){
                             _this.form_data=response.data.data;
-                            _this.init_html=response.data.data.body_html;
                         }else{
                             _this.$message.error(result.msg);
                         }
@@ -103,35 +73,21 @@
                         console.log(error);
                     });
             },
-            getCategoryList() {
-                var _this = this;
-                axios.get('/common/get_category',{
-                    params:{
-                        type:'article'
-                    }
-                })
-                    .then(function (response) {
-                        console.log(response);
-
-                        _this.categories = response.data.data;
-                        _this.loading=false;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
 
             save(){
                 var _this = this;
+                if(_this.category_id){
+                    _this.form_data.category_id = _this.category_id;
+                }
                 if(_this.item_id){
-                    axios.put('/admin/articles/'+_this.item_id,{
+                    axios.put('/admin/banners/'+_this.item_id,{
                         form_data:_this.form_data,
 
                     })
                         .then(function (response) {
                             _this.$message({
                                 showClose: true,
-                                message: '修改文章成功！',
+                                message: '修改banner成功！',
                                 type: 'success'
                             });
                         })
@@ -139,7 +95,7 @@
                             console.log(error);
                         });
                 }else{
-                    axios.post('/admin/articles',{
+                    axios.post('/admin/banners',{
                         form_data:_this.form_data,
 
                     })

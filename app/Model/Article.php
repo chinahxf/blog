@@ -8,7 +8,7 @@ class Article extends Model
 {
     protected $table="articles";
     protected $primaryKey="article_id";
-    protected $fillable=['user_id','category_id','name','body_text','body_html','browse_num','category_name','thumb_img'];
+    protected $fillable=['user_id','category_id','name','body_text','body_html','browse_num','thumb_img'];
 
     public function getBodyTextAttribute($value)
     {
@@ -21,5 +21,9 @@ class Article extends Model
     public function users()
     {
         return $this->belongsTo('App\User',"user_id","id");
+    }
+    public function categorys()
+    {
+        return $this->belongsTo('App\Model\Category','category_id','category_id');
     }
 }

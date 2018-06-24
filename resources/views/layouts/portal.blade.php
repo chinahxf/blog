@@ -15,6 +15,7 @@
     <link href="{{asset('css/portal/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/modern-business.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/portal.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/portal/swiper-4.2.6.min.css')}}">
     @yield('portal_style')
     {{--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
 
@@ -29,6 +30,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{asset('js/swiper-4.2.6.min.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {

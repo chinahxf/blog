@@ -17,7 +17,7 @@ class ArticleController extends AdminBaseController
         return view('admin.articles.list');
     }
 
-    public function addArticle()
+    public function createArticle()
     {
         return view('admin.articles.add');
     }
@@ -58,7 +58,7 @@ class ArticleController extends AdminBaseController
 
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $data = $request->all()['form_data'];
         $result = Article::create($data);
@@ -73,11 +73,12 @@ class ArticleController extends AdminBaseController
     {
         $result = Article::find($id);
         if ($result) {
+            $result->category_name = $result->categorys?$result->categorys->name:"";
             $article = $result->toArray();
-        } else {
-            return $this->sendFail("没有找到该文章信息！");
+            return $this->sendSuccess($article);
         }
-        return $this->sendSuccess($article);
+            return $this->sendFail("没有找到该文章信息！");
+
     }
     public function update($id=0,Request $request)
     {

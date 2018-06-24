@@ -25,14 +25,14 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'namespa
 
     Route::group(['prefix' => 'articles'], function () {
         Route::get('/get_article_list', 'ArticleController@getArticleList');
-        Route::get('/add_article', 'ArticleController@addArticle');
+        Route::get('/add_article', 'ArticleController@createArticle');
         Route::get('/detail_article/{id}', 'ArticleController@detailArticle')->where('id', '[0-9]+');
         Route::get('/edit_article/{id}', 'ArticleController@editArticle')->where('id', '[0-9]+');
         Route::get('/category', 'ArticleController@categoryArticle');
 
         Route::get('/', 'ArticleController@index');
         Route::get('/{id}', 'ArticleController@show')->where('id', '[0-9]+');
-        Route::post('/', 'ArticleController@create');
+        Route::post('/', 'ArticleController@store');
         Route::put('/{id}', 'ArticleController@update')->where('id', '[0-9]+');
         Route::delete('/{id}', 'ArticleController@destroy')->where('id', '[0-9]+');
     });
@@ -43,6 +43,21 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'namespa
         Route::get('/', 'MessageController@index');
         Route::get('/{id}', 'MessageController@show')->where('id', '[0-9]+');
         Route::delete('/{id}', 'MessageController@destroy')->where('id', '[0-9]+');
+    });
+    Route::group(['prefix' => 'banners'], function () {
+        Route::get('/get_banner_list/{id}', 'BannerController@getBannerList')->where('id', '[0-9]+');
+        Route::get('/category', 'BannerController@categoryBanner');
+        Route::get('/add_banner/{category_id}', 'BannerController@createBanner')->where('id', '[0-9]+');
+        Route::get('/edit_banner/{id}', 'BannerController@editBanner')->where('id', '[0-9]+');
+//        Route::get('/detail_article/{id}', 'ArticleController@detailArticle')->where('id', '[0-9]+');
+//        Route::get('/edit_article/{id}', 'ArticleController@editArticle')->where('id', '[0-9]+');
+//        Route::get('/category', 'ArticleController@categoryArticle');
+//
+        Route::get('/list{id}', 'BannerController@index')->where('id', '[0-9]+');
+        Route::get('/{id}', 'BannerController@show')->where('id', '[0-9]+');
+        Route::post('/', 'BannerController@store');
+        Route::put('/{id}', 'BannerController@update')->where('id', '[0-9]+');
+//        Route::delete('/{id}', 'ArticleController@destroy')->where('id', '[0-9]+');
     });
     Route::get('/users', 'UserController@index');
 

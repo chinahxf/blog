@@ -29,15 +29,15 @@
                         <a href="/admin/messages/category"><el-menu-item index="1-2">留言分类</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
-                <!--<el-submenu index="3">-->
-                    <!--<template slot="title">-->
-                        <!--<i class="el-icon-location"></i>-->
-                        <!--<span>标签管理</span>-->
-                    <!--</template>-->
-                    <!--<el-menu-item-group>-->
-                        <!--<a href="#"><el-menu-item index="1-1">标签管理</el-menu-item></a>-->
-                    <!--</el-menu-item-group>-->
-                <!--</el-submenu>-->
+                <el-submenu index="3">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>banner模块</span>
+                    </template>
+                    <el-menu-item-group>
+                        <a href="/admin/banners/category"><el-menu-item index="1-1">banner管理</el-menu-item></a>
+                    </el-menu-item-group>
+                </el-submenu>
             </el-menu>
         </el-col>
     </el-row>
