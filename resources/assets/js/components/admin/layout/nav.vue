@@ -26,7 +26,7 @@
                     </template>
                     <el-menu-item-group>
                         <a href="/admin/messages/get_message_list"><el-menu-item index="1-1">留言管理</el-menu-item></a>
-                        <a href="/admin/messages/category"><el-menu-item index="1-2">留言分类</el-menu-item></a>
+                        <a href="/admin/messages/category"><el-menu-item index="2-2">留言分类</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="3">
@@ -35,7 +35,16 @@
                         <span>banner模块</span>
                     </template>
                     <el-menu-item-group>
-                        <a href="/admin/banners/category"><el-menu-item index="1-1">banner管理</el-menu-item></a>
+                        <a href="/admin/banners/category"><el-menu-item index="3-1">banner管理</el-menu-item></a>
+                    </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="4">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>tag模块</span>
+                    </template>
+                    <el-menu-item-group>
+                        <a href="/admin/tags"><el-menu-item index="4-1">tag管理</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
             </el-menu>

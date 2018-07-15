@@ -170,7 +170,7 @@ exports.install = function (Vue, options) {
 
                         // console.log(sourceLink);
                         // $("#upLoadImg").html(sourceLink)
-                        // _this.form_data.thumb_img=sourceLink;
+                        _this.form_data.thumb_img=sourceLink;
                         _this.form_data.url=sourceLink;
                         // editor.cmd.do('insertHtml', '<img src="' + sourceLink + '" style="max-width:50%;"/>')
 

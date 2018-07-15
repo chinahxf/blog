@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class MessageController extends AdminBaseController
 {
-    public function getMessageList()
-    {
-        return view('admin.messages.list');
-    }
-    public function categoryMessage()
-    {
-        return view('admin.messages.category');
-    }
+//    public function getMessageList()
+//    {
+//        return view('admin.messages.list');
+//    }
+//    public function categoryMessage()
+//    {
+//        return view('admin.messages.category');
+//    }
 
     public function index(Request $request)
     {

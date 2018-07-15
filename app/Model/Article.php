@@ -26,4 +26,8 @@ class Article extends Model
     {
         return $this->belongsTo('App\Model\Category','category_id','category_id');
     }
+    public function tags()
+    {
+        return $this->morphToMany('App\Model\Tag','taggable');
+    }
 }

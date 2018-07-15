@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends PortalBaseController
 {
-    public function list(Request $request)
+    public function list($id=false,Request $request)
     {
         $query = Article::query();
-        if ($category_id= $request->input("category_id")){
-            $query->where("category_id",$category_id);
+        if ($id){
+            $query->where("category_id",$id);
         }
 //Log::info("aaa");
 //        $message = (new CommentSendMail())->onQueue("email");

@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Common\AdminBaseController;
-use App\Model\Banner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BannerController extends AdminBaseController
+class TagController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $query = Banner::query();
-        if ($id){
-            $query = $query->where("category_id",$id);
-        }
-//        $banner_list = Banner::get();
-        $banner_list = $query->paginate($this->limit);
-
-        return $this->sendSuccess($banner_list);
+        //
     }
 
     /**
@@ -34,7 +24,7 @@ class BannerController extends AdminBaseController
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -45,13 +35,7 @@ class BannerController extends AdminBaseController
      */
     public function store(Request $request)
     {
-        $data = $request->all()['form_data'];
-        //        return $this->sendResult("","",$data);
-        $result = Banner::create($data);
-        if ($result) {
-            return $this->sendSuccess("","添加成功！");
-        }
-        return $this->sendFail('');
+        //
     }
 
     /**
@@ -62,13 +46,8 @@ class BannerController extends AdminBaseController
      */
     public function show($id)
     {
-        $banners = Banner::find($id);
-        if ($banners){
-            return $this->sendSuccess($banners);
-        }
-        return $this->sendFail("获取失败！");
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -90,11 +69,7 @@ class BannerController extends AdminBaseController
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all()['form_data'];
-        $result = Banner::where("banner_id", $id)->update($data);
-        if (!$result) {
-            return $this->sendFail("修改失败！");
-        }
+        //
     }
 
     /**

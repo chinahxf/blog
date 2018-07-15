@@ -8,16 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/')}}"><span class="zl-nav-font">主页</span></a>
+                    <a class="nav-link" href="{{url('/')}}"><span class="zl-nav-font">首页</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/portal/articles/list?category_id=1')}}"><span class="zl-nav-font">新闻</span></a>
+                    <a class="nav-link" href="{{url('/portal/articles/list/1')}}"><span class="zl-nav-font">杂文区</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:;"><span class="zl-nav-font">活动</span></a>
+                    <a class="nav-link" href="javascript:;"><span class="zl-nav-font">深思区</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services.html"><span class="zl-nav-font">思考</span></a>
+                    <a class="nav-link" href="services.html"><span class="zl-nav-font">话题区</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="services.html"><span class="zl-nav-font">个人</span></a>

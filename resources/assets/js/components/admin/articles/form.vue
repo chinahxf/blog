@@ -34,6 +34,31 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-1 control-label">标签</label>
+            <div class="col-sm-8">
+                <el-tag
+                        :key="tag"
+                        v-for="tag in form_data.tags"
+                        closable
+                        :disable-transitions="false"
+                        @close="handleClose(tag)">
+                    {{tag}}
+                </el-tag>
+                <el-input
+                        class="input-new-tag"
+                        v-if="inputVisible"
+                        v-model="inputValue"
+                        ref="saveTagInput"
+                        size="small"
+                        @keyup.enter.native="handleInputConfirm"
+                        @blur="handleInputConfirm"
+                >
+                </el-input>
+                <el-button v-else class="zl-button-tag" size="small" @click="showInput">添加标签</el-button>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="col-sm-1 control-label">内容</label>
             <div class="col-sm-10">
                 <div id="editorElem" v-model="form_data.body_html" style="text-align:left">
@@ -65,7 +90,10 @@
                     body_text:'',
                     thumb_img:'',
                     category_id:'',
+                    tags: [],
                 },
+                inputVisible: false,
+                inputValue: '',
                 init_html:'',
                 categories:[],
                 paginate:{},
@@ -120,7 +148,6 @@
                         console.log(error);
                     });
             },
-
             save(){
                 var _this = this;
                 if(_this.item_id){
@@ -154,6 +181,25 @@
                             console.log(error);
                         });
                 }
+            },
+            handleClose(tag) {
+                this.form_data.tags.splice(this.form_data.tags.indexOf(tag), 1);
+            },
+
+            showInput() {
+                this.inputVisible = true;
+                this.$nextTick(_ => {
+                    this.$refs.saveTagInput.$refs.input.focus();
+                });
+            },
+
+            handleInputConfirm() {
+                let inputValue = this.inputValue;
+                if (inputValue) {
+                    this.form_data.tags.push(inputValue);
+                }
+                this.inputVisible = false;
+                this.inputValue = '';
             }
         }
     }

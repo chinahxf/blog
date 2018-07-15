@@ -4,38 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Common\AdminBaseController;
 use App\Model\Article;
+use App\model\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends AdminBaseController
 {
-    /**
-     * 文章页面跳转
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getArticleList()
-    {
-        return view('admin.articles.list');
-    }
-
-    public function createArticle()
-    {
-        return view('admin.articles.add');
-    }
-
-    public function detailArticle($id = 0)
-    {
-        return view('admin.articles.detail', ['id' => $id]);
-    }
-
-    public function editArticle($id = 0)
-    {
-        return view('admin.articles.edit', ['id' => $id]);
-    }
-
-    public function categoryArticle()
-    {
-        return view("admin.articles.category");
-    }
     /**
      * 文章列表
      * @return array
@@ -61,7 +34,17 @@ class ArticleController extends AdminBaseController
     public function store(Request $request)
     {
         $data = $request->all()['form_data'];
+        if ($data['tags']){
+            $tags = [];
+            foreach ($data['tags'] as $item){
+                $tag = Tag::firstOrCreate(['name' => $item]);
+                $tags[] = $tag->id;
+            }
+        }
         $result = Article::create($data);
+        if ($tags){
+            $result->tags()->attach($tags);
+        }
         if ($result) {
             return $this->sendSuccess("", "添加成功！");
         }

@@ -56934,7 +56934,7 @@ exports.install = function (Vue, options) {
 
                     // console.log(sourceLink);
                     // $("#upLoadImg").html(sourceLink)
-                    // _this.form_data.thumb_img=sourceLink;
+                    _this.form_data.thumb_img = sourceLink;
                     _this.form_data.url = sourceLink;
                     // editor.cmd.do('insertHtml', '<img src="' + sourceLink + '" style="max-width:50%;"/>')
                 },
@@ -96045,6 +96045,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -96156,7 +96165,7 @@ var render = function() {
                       "a",
                       { attrs: { href: "/admin/messages/category" } },
                       [
-                        _c("el-menu-item", { attrs: { index: "1-2" } }, [
+                        _c("el-menu-item", { attrs: { index: "2-2" } }, [
                           _vm._v("留言分类")
                         ])
                       ],
@@ -96182,8 +96191,34 @@ var render = function() {
                       "a",
                       { attrs: { href: "/admin/banners/category" } },
                       [
-                        _c("el-menu-item", { attrs: { index: "1-1" } }, [
+                        _c("el-menu-item", { attrs: { index: "3-1" } }, [
                           _vm._v("banner管理")
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "el-submenu",
+                { attrs: { index: "4" } },
+                [
+                  _c("template", { slot: "title" }, [
+                    _c("i", { staticClass: "el-icon-location" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("tag模块")])
+                  ]),
+                  _vm._v(" "),
+                  _c("el-menu-item-group", [
+                    _c(
+                      "a",
+                      { attrs: { href: "/admin/tags" } },
+                      [
+                        _c("el-menu-item", { attrs: { index: "4-1" } }, [
+                          _vm._v("tag管理")
                         ])
                       ],
                       1
@@ -96850,6 +96885,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ["item_id"],
@@ -96860,8 +96920,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 body_html: '',
                 body_text: '',
                 thumb_img: '',
-                category_id: ''
+                category_id: '',
+                tags: []
             },
+            inputVisible: false,
+            inputValue: '',
             init_html: '',
             categories: [],
             paginate: {},
@@ -96942,6 +97005,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     console.log(error);
                 });
             }
+        },
+        handleClose: function handleClose(tag) {
+            this.form_data.tags.splice(this.form_data.tags.indexOf(tag), 1);
+        },
+        showInput: function showInput() {
+            var _this2 = this;
+
+            this.inputVisible = true;
+            this.$nextTick(function (_) {
+                _this2.$refs.saveTagInput.$refs.input.focus();
+            });
+        },
+        handleInputConfirm: function handleInputConfirm() {
+            var inputValue = this.inputValue;
+            if (inputValue) {
+                this.form_data.tags.push(inputValue);
+            }
+            this.inputVisible = false;
+            this.inputValue = '';
         }
     }
 });
@@ -97020,6 +97102,68 @@ var render = function() {
         _vm._v(" "),
         _c("a", { attrs: { id: "upLoadImg" } }, [_vm._v("点击上传缩略图")])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { staticClass: "col-sm-1 control-label" }, [_vm._v("标签")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-sm-8" },
+        [
+          _vm._l(_vm.form_data.tags, function(tag) {
+            return _c(
+              "el-tag",
+              {
+                key: tag,
+                attrs: { closable: "", "disable-transitions": false },
+                on: {
+                  close: function($event) {
+                    _vm.handleClose(tag)
+                  }
+                }
+              },
+              [_vm._v("\n                " + _vm._s(tag) + "\n            ")]
+            )
+          }),
+          _vm._v(" "),
+          _vm.inputVisible
+            ? _c("el-input", {
+                ref: "saveTagInput",
+                staticClass: "input-new-tag",
+                attrs: { size: "small" },
+                on: { blur: _vm.handleInputConfirm },
+                nativeOn: {
+                  keyup: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key)
+                    ) {
+                      return null
+                    }
+                    _vm.handleInputConfirm($event)
+                  }
+                },
+                model: {
+                  value: _vm.inputValue,
+                  callback: function($$v) {
+                    _vm.inputValue = $$v
+                  },
+                  expression: "inputValue"
+                }
+              })
+            : _c(
+                "el-button",
+                {
+                  staticClass: "zl-button-tag",
+                  attrs: { size: "small" },
+                  on: { click: _vm.showInput }
+                },
+                [_vm._v("添加标签")]
+              )
+        ],
+        2
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [

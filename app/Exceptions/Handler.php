@@ -83,7 +83,7 @@ protected function convertValidationExceptionToResponse(ValidationException $e, 
                 "msg"    => current($e->errors())[0],
             ];
             return $request->expectsJson()
-                ? response()->json($result)
+                ? response()->json($result,422)
                 : $this->invalid($request, $e);
 }
 }
