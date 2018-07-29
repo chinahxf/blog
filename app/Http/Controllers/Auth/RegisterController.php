@@ -77,6 +77,6 @@ class RegisterController extends Controller
 //        $this->request->setTrustedProxies(['192.168.10.1','192.168.0.1']);
         $user->login_ip = $this->request->getClientIp();
         $user->save();
-        return "/admin";
+        return "/boss";
     }
 }

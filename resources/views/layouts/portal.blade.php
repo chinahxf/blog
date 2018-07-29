@@ -9,19 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>生命与自然</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="{{asset('css/portal/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/modern-business.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/portal.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/portal/swiper-4.2.6.min.css')}}">
-    @yield('portal_style')
-    {{--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
-
-    <!-- Custom styles for this template -->
-    {{--<link href="css/modern-business.css" rel="stylesheet">--}}
-
+@yield('portal_style')
 
 </head>
 

@@ -3,9 +3,11 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
+    use SoftDeletes;
     protected $table="articles";
     protected $primaryKey="article_id";
     protected $fillable=['user_id','category_id','name','body_text','body_html','browse_num','thumb_img'];
@@ -14,9 +16,9 @@ class Article extends Model
     {
         return str_limit($value,150);
     }
-    public function messages()
+    public function comments()
     {
-        return $this->hasMany('App\Model\Message',"article_id","article_id");
+        return $this->hasMany('App\Model\Comment',"article_id","article_id");
     }
     public function users()
     {

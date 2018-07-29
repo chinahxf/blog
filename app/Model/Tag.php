@@ -11,6 +11,6 @@ class Tag extends Model
     protected $fillable = ['name'];
     public function articles()
     {
-        return $this->morphedByMany('App\Article', 'taggable','taggables');
+        return $this->morphedByMany('App\Model\Article', 'taggable','taggables');
     }
 }

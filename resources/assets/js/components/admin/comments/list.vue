@@ -24,7 +24,7 @@
                 </el-form-item>
 
                 <el-form-item>
-                    <el-button type="primary" icon="el-icon-search" @click="getMessageList">搜索</el-button>
+                    <el-button type="primary" icon="el-icon-search" @click="getCommentList">搜索</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -35,7 +35,7 @@
                     v-loading="loading"
             >
                 <el-table-column
-                        prop="message_id"
+                        prop="comment_id"
                         label="留言ID">
                 </el-table-column>
                 <el-table-column
@@ -54,12 +54,12 @@
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
-                                @click="handleDetail(scope.row.message_id)">查看
+                                @click="handleDetail(scope.row.comment_id)">查看
                         </el-button>
                         <el-button
                                 size="mini"
                                 type="danger"
-                                @click="handleDelete(scope.row.message_id)">删除
+                                @click="handleDelete(scope.row.comment_id)">删除
                         </el-button>
                     </template>
                 </el-table-column>
@@ -77,7 +77,7 @@
             </el-pagination>
         </div>
         <el-dialog
-                title="留言详情"
+                title="评论详情"
                 :visible.sync="messageDetail"
                 width="30%"
                 >
@@ -107,14 +107,14 @@
             }
         },
         mounted() {
-            this.getMessageList();
+            this.getCommentList();
             this.getCategoryList();
         },
         methods: {
             handleDetail(id) {
                 var _this=this;
                 var _this = this;
-                axios.get('/admin/messages/'+id, {
+                axios.get('/boss/comments/'+id, {
                 })
                     .then(function (response) {
                         console.log(response);
@@ -134,9 +134,9 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    axios.delete('/admin/messages/'+id,{})
+                    axios.delete('/boss/comments/'+id,{})
                         .then(function (response) {
-                            _this.getMessageList();
+                            _this.getCommentList();
                             _this.$message({
                                 type: 'success',
                                 message: response.data.msg
@@ -154,7 +154,7 @@
                 var _this = this;
                 axios.get('/common/get_category', {
                     params: {
-                        type: 'message'
+                        type: 'comment'
                     }
                 })
                     .then(function (response) {
@@ -169,11 +169,11 @@
             },
             handleCurrentChange(val) {
                 var _this = this;
-                _this.getMessageList(val)
+                _this.getCommentList(val)
             },
-            getMessageList(page=1) {
+            getCommentList(page=1) {
                 var _this = this;
-                axios.get('/admin/messages', {
+                axios.get('/boss/comments', {
                     params: {
                         page: page,
                         name: _this.form_data.name,

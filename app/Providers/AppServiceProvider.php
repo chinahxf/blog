@@ -16,8 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $a = Category::get();
-        View::share('key', $a);
+        $tags = ['btn-primary', 'btn-secondary', 'btn-success', 'btn-danger', 'btn-warning', 'btn-info', 'btn-light', 'btn-dark'];
+        View::share('tag_arr',$tags);
         Schema::defaultStringLength(191);
     }
 

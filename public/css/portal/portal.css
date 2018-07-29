@@ -11,17 +11,27 @@ body {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
 }
 
+.zl-nav-title {
+    color: black !important;
+}
+
 .zl-article-list-header {
     background-color: #FFFFFF;
     margin-bottom: 0px;
     /*border-bottom:1px solid rgba(0,0,0,0.5);*/
     /*border-radius:0px ;*/
 }
-.zl-article-list-title{
+
+.zl-article-list-title {
     color: #1e8131;
 }
-.zl-article-list-button{
+
+.zl-article-list-button {
     background-color: #a3d65c;
+}
+
+.zl-article-list-big-div {
+    min-height: 446px;
 }
 
 /*去除下间距*/
@@ -56,3 +66,15 @@ body {
     margin-top: 10px;
 }
 
+.zl_login_button {
+    /*text-decoration:none;*/
+    margin-left: 50px;
+    color: black !important;
+    outline: none;
+}
+
+.zl_register_button {
+    /*text-decoration:none;*/
+    color: black !important;
+    outline: none;
+}

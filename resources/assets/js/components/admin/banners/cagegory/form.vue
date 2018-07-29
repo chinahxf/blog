@@ -60,7 +60,7 @@
         methods: {
             getBannerDetail() {
                 var _this = this;
-                axios.get("/admin/banners/"+_this.item_id)
+                axios.get("/boss/banners/"+_this.item_id)
                     .then(function (response) {
                         var result=response.data;
                         if(result.ret==0){
@@ -80,7 +80,7 @@
             save(){
                 var _this = this;
                 if(_this.item_id){
-                    axios.put('/admin/articles/'+_this.item_id,{
+                    axios.put('/boss/articles/'+_this.item_id,{
                         form_data:_this.form_data,
 
                     })
@@ -95,7 +95,7 @@
                             console.log(error);
                         });
                 }else{
-                    axios.post('/admin/articles',{
+                    axios.post('/boss/articles',{
                         form_data:_this.form_data,
 
                     })

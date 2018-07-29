@@ -3,11 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Message extends Model
+class Comment extends Model
 {
-    protected $table="messages";
-    protected $primaryKey="message_id";
+    use SoftDeletes;
+    protected $table="comments";
+    protected $primaryKey="comment_id";
     protected $fillable=["article_id","category_id","category_name","user_id","to_user_id","body_text","parent_id"];
 
     public function toUsers()

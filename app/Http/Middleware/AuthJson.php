@@ -18,7 +18,7 @@ class AuthJson
     {
         if (!Auth::check()){
             $res = array('ret'=>1, 'msg'=>"无权操作！", 'data'=>null);
-            return response()->json($res);
+            return response()->json($res,403);
         }
         return $next($request);
     }

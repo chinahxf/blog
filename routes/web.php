@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('is_admin','auth');
 
-Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'boss', 'namespace' => 'Admin'], function () {
 //    index
     Route::get('/', 'HomeController@index');
 
@@ -40,16 +40,16 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'namespa
         Route::put('/{id}', 'ArticleController@update')->where('id', '[0-9]+');
         Route::delete('/{id}', 'ArticleController@destroy')->where('id', '[0-9]+');
     });
-    Route::group(['prefix' => 'messages'], function () {
-        Route::view('/get_message_list', 'admin.messages.list');
-        Route::view('/category', 'admin.messages.category');
+    Route::group(['prefix' => 'comments'], function () {
+        Route::view('/get_comment_list', 'admin.comments.list');
+        Route::view('/category', 'admin.comments.category');
 
-        Route::get('/', 'MessageController@index');
-        Route::get('/{id}', 'MessageController@show')->where('id', '[0-9]+');
-        Route::delete('/{id}', 'MessageController@destroy')->where('id', '[0-9]+');
+        Route::get('/', 'CommentController@index');
+        Route::get('/{id}', 'CommentController@show')->where('id', '[0-9]+');
+        Route::delete('/{id}', 'CommentController@destroy')->where('id', '[0-9]+');
     });
     Route::group(['prefix' => 'banners'], function () {
-        Route::view('/get_banner_list/{id}', function($id){
+        Route::get('/get_banner_list/{id}', function($id){
             return view('admin.banners.list',['category_id'=>$id]);
         })->where('id', '[0-9]+');
         Route::view('/category', 'admin.banners.category.list');
@@ -57,7 +57,7 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'admin', 'namespa
             return view('admin.banners.add',['category_id'=>$id]);
         })->where('id', '[0-9]+');
         Route::get('/edit_banner/{id}', function ($id){
-            return view('admin.banners.edit',['category_id'=>$id]);
+            return view('admin.banners.edit',['id'=>$id]);
         })->where('id', '[0-9]+');
 //        Route::get('/detail_article/{id}', 'ArticleController@detailArticle')->where('id', '[0-9]+');
 //        Route::get('/edit_article/{id}', 'ArticleController@editArticle')->where('id', '[0-9]+');
@@ -85,7 +85,7 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
     Route::get('/', 'HomepageController@index')->name('portal');
     Route::group(['prefix' => 'articles'], function () {
         Route::get('/list/{id}', 'ArticleController@list')->where('id','[0-9]+');
-        Route::get('/info', 'ArticleController@info');
+        Route::get('/{id}', 'ArticleController@info')->where('id','[0-9]+');
     });
     Route::group(['prefix' => 'message'], function () {
         Route::get('/list', 'MessageController@index');
@@ -95,7 +95,9 @@ Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
         Route::get('/create', 'FriendController@create');
         Route::post('/', 'FriendController@store');
     });
-
+    Route::group(['prefix' => 'tags'], function () {
+        Route::get('/{id}', 'TagController@show')->where('id','[0-9]+');
+    });
 });
 Route::group(['prefix' => 'wechat', 'namespace' => 'Wechat'], function () {
     Route::any('/', 'WechatController@index');

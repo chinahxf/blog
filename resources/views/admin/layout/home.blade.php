@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+    @include('admin.layout.header')
     <div class="zl-admin-row row">
         <div class="col-md-2 zl-col-md-2">
             @include('admin.layout.nav')

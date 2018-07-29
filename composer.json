@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "生命与自然",
+    "description": "生命，自然",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
@@ -13,7 +13,8 @@
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
         "pusher/pusher-php-server": "~3.0",
-        "qiniu/php-sdk": "^7.2"
+        "qiniu/php-sdk": "^7.2",
+        "socialiteproviders/qq": "^3.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -28,7 +29,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files":[
+            "app/Helper/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

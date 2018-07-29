@@ -1,14 +1,14 @@
 @extends('portal.layout.home')
 @section('content_portal')
     <!-- Page Content -->
-    <div class="container">
+    <div class="zl-article-list-big-div container ">
 
         <ol class="breadcrumb zl-article-list-header">
             <li class="breadcrumb-item">当前位置:</li>
             <li class="breadcrumb-item">
                 <a href="{{url('/')}}">首页</a>
             </li>
-            <li class="breadcrumb-item active">生活</li>
+            <li class="breadcrumb-item active">{{$category_name}}</li>
         </ol>
     @foreach($list as $item)
         <!-- Blog Post -->
@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <a href="{{url("/portal/articles/info?id=$item->article_id")}}">
+                            <a href="{{url("/portal/articles/$item->article_id")}}">
                                 <img class="img-fluid rounded" src="{{$item->thumb_img}}?imageView2/1/w/750/h/300" alt="">
                             </a>
                         </div>
@@ -28,10 +28,14 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    分类：{{$item->category_name}}
                     作者：{{$item->users->name}}
                     时间：{{$item->createad_at}}
                     浏览量：{{$item->browse_num}}
+                    标签：
+
+                    @foreach($item->tags as $tag)
+                        <a href="{{url("/portal/tags/$tag->id")}}">{{$tag->name}}</a>
+                    @endforeach
                 </div>
             </div>
         @endforeach

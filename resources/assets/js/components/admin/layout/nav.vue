@@ -15,8 +15,8 @@
                         <span>文章模块</span>
                     </template>
                     <el-menu-item-group>
-                        <a href="/admin/articles/get_article_list"><el-menu-item index="1-1">文章管理</el-menu-item></a>
-                        <a href="/admin/articles/category"><el-menu-item index="1-2">文章分类</el-menu-item></a>
+                        <a href="/boss/articles/get_article_list"><el-menu-item index="1-1">文章管理</el-menu-item></a>
+                        <a href="/boss/articles/category"><el-menu-item index="1-2">文章分类</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="2">
@@ -25,8 +25,8 @@
                         <span>留言模块</span>
                     </template>
                     <el-menu-item-group>
-                        <a href="/admin/messages/get_message_list"><el-menu-item index="1-1">留言管理</el-menu-item></a>
-                        <a href="/admin/messages/category"><el-menu-item index="2-2">留言分类</el-menu-item></a>
+                        <a href="/boss/comments/get_comment_list"><el-menu-item index="1-1">评论管理</el-menu-item></a>
+                        <a href="/boss/comments/category"><el-menu-item index="2-2">评论分类</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="3">
@@ -35,7 +35,7 @@
                         <span>banner模块</span>
                     </template>
                     <el-menu-item-group>
-                        <a href="/admin/banners/category"><el-menu-item index="3-1">banner管理</el-menu-item></a>
+                        <a href="/boss/banners/category"><el-menu-item index="3-1">banner管理</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-submenu index="4">
@@ -44,7 +44,7 @@
                         <span>tag模块</span>
                     </template>
                     <el-menu-item-group>
-                        <a href="/admin/tags"><el-menu-item index="4-1">tag管理</el-menu-item></a>
+                        <a href="/boss/tags"><el-menu-item index="4-1">tag管理</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
             </el-menu>

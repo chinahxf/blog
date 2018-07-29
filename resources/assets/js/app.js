@@ -47,8 +47,8 @@ Vue.component('admin-article-edit', require('./components/admin/articles/form.vu
 Vue.component('admin-article-category', require('./components/admin/articles/category.vue'));
 
 //message
-Vue.component('admin-message-list', require('./components/admin/messages/list.vue'));
-Vue.component('admin-message-category', require('./components/admin/messages/category.vue'));
+Vue.component('admin-comment-list', require('./components/admin/comments/list.vue'));
+Vue.component('admin-comment-category', require('./components/admin/comments/category.vue'));
 
 //banner
 Vue.component('admin-banner-category', require('./components/admin/banners/cagegory/list.vue'));

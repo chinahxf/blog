@@ -86,11 +86,11 @@ console.log(this.item_id)
             },*/
             handleDetail(id){
 //                this.dialogFormVisible = true;
-//                window.location.href = '/admin/articles/detail_article/'+id
+//                window.location.href = '/boss/articles/detail_article/'+id
             },
             handleEdit(id){
 //                this.dialogFormVisible = true;
-                window.location.href = '/admin/banners/edit_banner/'+id
+                window.location.href = '/boss/banners/edit_banner/'+id
             },
             handleCurrentChange(val){
                 var _this = this;
@@ -101,7 +101,7 @@ console.log(this.item_id)
                 console.log(page);
                 var _this = this;
                 console.log(_this.item_id);
-                axios.get("/admin/banners/list"+_this.item_id,{
+                axios.get("/boss/banners/list"+_this.item_id,{
                     params:{
                         page:page
                     }
@@ -115,7 +115,7 @@ console.log(this.item_id)
                     .catch(function (error) {
                         console.log(error);
                     });
-            }
+            },
         }
     }
 </script>

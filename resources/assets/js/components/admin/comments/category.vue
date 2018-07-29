@@ -32,7 +32,7 @@
                 var _this = this;
                 axios.get('/common/get_category', {
                     params: {
-                        type: 'message'
+                        type: 'comment'
                     }
                 })
                     .then(function (response) {

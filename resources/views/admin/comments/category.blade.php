@@ -5,7 +5,7 @@
         <div class="panel-heading zl-close-float"><span>留言分类</span></div>
 
         <div class="panel-body">
-            <admin-message-category></admin-message-category>
+            <admin-comment-category></admin-comment-category>
         </div>
     </div>
 @endsection

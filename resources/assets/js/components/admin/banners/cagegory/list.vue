@@ -1,5 +1,6 @@
 <template>
     <div>
+        <el-button type="primary" icon="el-icon-search" @click="addCategory">添加banner类型</el-button>
         <template>
             <el-table
                     :data="items"
@@ -58,10 +59,10 @@
         },
         methods: {
             handleDetail(id){
-                window.location.href = '/admin/banners/get_banner_list/'+id
+                window.location.href = '/boss/banners/get_banner_list/'+id
             },
             handleEdit(id){
-                window.location.href = '/admin/articles/edit_article/'+id
+                window.location.href = '/boss/articles/edit_article/'+id
             },
             handleDelete(id){
                 var _this = this;
@@ -70,7 +71,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    axios.delete('/admin/articles/'+id,{})
+                    axios.delete('/boss/articles/'+id,{})
                         .then(function (response) {
                             _this.getArticleList();
                             _this.$message({
@@ -103,6 +104,35 @@
                     });
 
             },
+            addCategory() {
+                var _this = this;
+                _this.$prompt('请输入分类名称', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                }).then(({value}) => {
+                    _this.loading = true;
+                    axios.post('/common/add_category', {
+                        name: value,
+                        category_type: 'banner',
+                    })
+                        .then(function (response) {
+                            if (response.data.ret == 0) {
+                                _this.$message({
+                                    showClose: true,
+                                    message: response.data.msg,
+                                    type: 'success'
+                                });
+                                _this.getBannerCategoryList();
+                                _this.loading = false;
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }).catch(() => {
+
+                });
+            }
         }
     }
 </script>

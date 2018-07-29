@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Common\AdminBaseController;
-use App\Model\Message;
+use App\Model\Comment;
 use Illuminate\Http\Request;
 
-class MessageController extends AdminBaseController
+class CommentController extends AdminBaseController
 {
 //    public function getMessageList()
 //    {
@@ -19,7 +19,7 @@ class MessageController extends AdminBaseController
 
     public function index(Request $request)
     {
-        $messages = Message::query();
+        $messages = Comment::query();
         if ($request->has('body_text')) {
             $messages->where('body_text', 'like', '%' . $request->body_text . '%');
         }
@@ -35,7 +35,7 @@ class MessageController extends AdminBaseController
     }
     public function show($id = 0)
     {
-        $result = Message::find($id);
+        $result = Comment::find($id);
         if ($result) {
             $message = $result->toArray();
         } else {
@@ -45,8 +45,8 @@ class MessageController extends AdminBaseController
     }
     public function destroy($id=0)
     {
-        $result=Message::destroy($id);
-
+        $result=Comment::destroy($id);
+        Comment::where('parent_id',$id)->delete();
         if ($result){
             return $this->sendSuccess("","删除留言成功！");
         }

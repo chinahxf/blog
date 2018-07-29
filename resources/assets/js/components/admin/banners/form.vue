@@ -58,7 +58,7 @@
         methods: {
             getBannerDetail() {
                 var _this = this;
-                axios.get("/admin/banners/"+_this.item_id)
+                axios.get("/boss/banners/"+_this.item_id)
                     .then(function (response) {
                         var result=response.data;
                         if(result.ret==0){
@@ -80,7 +80,7 @@
                     _this.form_data.category_id = _this.category_id;
                 }
                 if(_this.item_id){
-                    axios.put('/admin/banners/'+_this.item_id,{
+                    axios.put('/boss/banners/'+_this.item_id,{
                         form_data:_this.form_data,
 
                     })
@@ -95,7 +95,7 @@
                             console.log(error);
                         });
                 }else{
-                    axios.post('/admin/banners',{
+                    axios.post('/boss/banners',{
                         form_data:_this.form_data,
 
                     })

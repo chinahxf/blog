@@ -101,10 +101,10 @@
         },
         methods: {
             handleDetail(id){
-                window.location.href = '/admin/articles/detail_article/'+id
+                window.location.href = '/boss/articles/detail_article/'+id
             },
             handleEdit(id){
-                window.location.href = '/admin/articles/edit_article/'+id
+                window.location.href = '/boss/articles/edit_article/'+id
             },
             handleDelete(id){
                 var _this = this;
@@ -113,7 +113,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    axios.delete('/admin/articles/'+id,{})
+                    axios.delete('/boss/articles/'+id,{})
                         .then(function (response) {
                             _this.getArticleList();
                             _this.$message({
@@ -152,7 +152,7 @@
             },
             getArticleList(page=1) {
                 var _this = this;
-                axios.get('/admin/articles',{
+                axios.get('/boss/articles',{
                     params:{
                         page:page,
                         name:_this.form_data.name,
