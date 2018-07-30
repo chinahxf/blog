@@ -16,7 +16,15 @@
     <link href="{{asset('css/portal/portal.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/portal/swiper-4.2.6.min.css')}}">
 @yield('portal_style')
-
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?7d31f8b662134901bfc465e0b12f356a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body>

@@ -89,6 +89,9 @@
                 <hr>
                 {!! $info->body_html !!}
                 <hr>
+                <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址">复制网址</a><a href="#" class="bds_more" data-cmd="more">分享到：</a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","sqq","qzone","douban","copy"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                <hr>
                 <!-- Comments Form -->
                 <div class="card my-4">
                     <h5 class="card-header">评论:</h5>
