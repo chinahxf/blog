@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark zl-nav">
     <div class="container">
-        <a class="navbar-brand zl-nav-title" href="{{url("/")}}">生命与自然</a>
+        <a class="navbar-brand" href="{{url("index")}}">生命与自然</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -62,12 +62,17 @@
                     </div>
                 </div>
                 @else
-                    <a class="dropdown-item" href="#"
-                       onclick="event.preventDefault();
+                    <div class="dropdown show">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://placehold.it/25x25" class="rounded-circle"/></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"
+                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">退出</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </div>
                     @endguest
         </div>
     </div>
