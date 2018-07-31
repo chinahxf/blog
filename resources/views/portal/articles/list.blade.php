@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    作者：{{$item->users->name}}
+                    作者：{{$item->users->name??''}}
                     时间：{{$item->createad_at}}
                     浏览量：{{$item->browse_num}}
                     标签：
