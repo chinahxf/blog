@@ -87,7 +87,7 @@
                         .then(function (response) {
                             _this.$message({
                                 showClose: true,
-                                message: '修改文章成功！',
+                                message: '修改banner成功！',
                                 type: 'success'
                             });
                         })
@@ -102,7 +102,7 @@
                         .then(function (response) {
                             _this.$message({
                                 showClose: true,
-                                message: '添加文章成功！',
+                                message: '添加banner成功！',
                                 type: 'success'
                             });
                         })

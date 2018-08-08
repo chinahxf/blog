@@ -3,7 +3,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             @foreach($banners as $item)
-                <div class="swiper-slide"><a href="{{$item->to_url}}"><img src="{{$item->url}}"/></a></div>
+                <div class="swiper-slide"><a href="{{$item->to_url}}"><img src="{{$item->url}}" style="width: 100%"/></a></div>
             @endforeach
         </div>
     </div>
@@ -50,6 +50,7 @@
     <script>
         var mySwiper = new Swiper('.swiper-container', {
             autoplay: true,//可选选项，自动滑动
+            width: window.innerWidth,
         })
     </script>
 @endsection
