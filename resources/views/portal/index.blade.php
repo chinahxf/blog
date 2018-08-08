@@ -1,6 +1,6 @@
 @extends('portal.layout.home')
 @section('content_portal')
-    <div class="swiper-container">
+    <div class="swiper-container" style="height: 400px;">
         <div class="swiper-wrapper">
             @foreach($banners as $item)
                 <div class="swiper-slide"><a href="{{$item->to_url}}"><img src="{{$item->url}}" style="width: 100%"/></a></div>
