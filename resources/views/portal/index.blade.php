@@ -8,6 +8,10 @@
         </div>
     </div>
     <div class="container">
+        <p>在这喧杂的城市里</p>
+
+    </div>
+    <div class="container">
 
         <h1 class="my-4">思考</h1>
         @if(isset($articles[1]))

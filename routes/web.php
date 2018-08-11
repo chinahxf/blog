@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return redirect()->route("portal");
 });
+Route::get('index', function () {
+    return redirect()->route("portal");
+});
 
 Auth::routes();
 
@@ -82,7 +85,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Comm
         Route::get('/getQiNiuToken', 'CommonController@getQiNiuToken');
 });
 Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
+    Route::get('/qqlogin','TestController@qqlogin');
+    Route::get('/qq','TestController@qq');
     Route::get('/', 'HomepageController@index')->name('portal');
+    Route::group(['prefix' => 'login'], function () {
+        Route::group(['prefix' => 'qq'], function () {
+            Route::get('/', 'LoginController@qq');
+            Route::get('/callback', 'LoginController@qqcallback');
+        });
+
+    });
     Route::group(['prefix' => 'articles'], function () {
         Route::get('/list/{id}', 'ArticleController@list')->where('id','[0-9]+');
         Route::get('/{id}', 'ArticleController@info')->where('id','[0-9]+');

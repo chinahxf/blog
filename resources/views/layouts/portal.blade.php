@@ -9,7 +9,7 @@
     <meta name="description" content="在这个喧杂的社会中，是否可以静下心来，思考一下关于自然，关于生命，把看到问题的第一想法说出来，我们一起分享">
     <meta name="author" content="hxf">
     <title>生命与自然</title>
-
+    <link rel="shortcut icon" href="{{asset('images/head.png')}}" />
     <link href="{{asset('css/portal/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/modern-business.css')}}" rel="stylesheet">
     <link href="{{asset('css/portal/portal.css')}}" rel="stylesheet">
