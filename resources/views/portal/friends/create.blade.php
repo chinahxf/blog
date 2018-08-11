@@ -46,7 +46,7 @@
                 url:$("#inputUrl").val()
             }
             $.ajax({
-                url:"{{url('/portal/friends')}}",
+                url:"{{url('/friends')}}",
                 type:"POST",
                 data:data,
                 success:function (data) {

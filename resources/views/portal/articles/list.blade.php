@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <a href="{{url("/portal/articles/$item->article_id")}}">
+                            <a href="{{url("/articles/$item->article_id")}}">
                                 <img class="img-fluid rounded" src="{{$item->thumb_img}}?imageView2/1/w/750/h/300" alt="">
                             </a>
                         </div>
@@ -34,7 +34,7 @@
                     标签：
 
                     @foreach($item->tags as $tag)
-                        <a href="{{url("/portal/tags/$tag->id")}}">{{$tag->name}}</a>
+                        <a href="{{url("/tags/$tag->id")}}">{{$tag->name}}</a>
                     @endforeach
                 </div>
             </div>

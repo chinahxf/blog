@@ -198,7 +198,7 @@
             var body_text = $(this).prev().val();
             var parent_id = $(this).data("parentid");
             $.ajax({
-                url: "{{url('/portal/message')}}",
+                url: "{{url('/message')}}",
                 type: "post",
                 data: {
                     article_id: article_id,

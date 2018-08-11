@@ -23,7 +23,7 @@
                     <ul class="list-unstyled mb-0">
                         @foreach($article_r as $item)
                             <li>
-                                <a href="{{url("/portal/articles/$item->article_id")}}">{{$item->name}}</a>
+                                <a href="{{url("/articles/$item->article_id")}}">{{$item->name}}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -39,7 +39,7 @@
                     <ul class="list-unstyled mb-0">
                         @foreach($comment_r as $item)
                             <li>
-                                <a href="{{url("/portal/articles/$item->article_id")}}">{{$item->body_text}}</a>
+                                <a href="{{url("/articles/$item->article_id")}}">{{$item->body_text}}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -53,7 +53,7 @@
         <div class="card-body">
             @foreach($tag_r->chunk(8) as $tag)
                 @foreach($tag as $key=>$item)
-                    <a class="btn btn-sm {{$tag_arr[$key]}}" href="{{url("/portal/tags/$item->id")}}" role="button">{{$item->name}}</a>
+                    <a class="btn btn-sm {{$tag_arr[$key]}}" href="{{url("/tags/$item->id")}}" role="button">{{$item->name}}</a>
                 @endforeach
             @endforeach
         </div>

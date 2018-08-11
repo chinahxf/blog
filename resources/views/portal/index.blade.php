@@ -24,7 +24,7 @@
                                 <p class="card-text">{{$item->body_text}}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{url("/portal/articles/$item->article_id")}}" class="btn btn-primary">前往</a>
+                                <a href="{{url("/articles/$item->article_id")}}" class="btn btn-primary">前往</a>
                             </div>
                         </div>
                     </div>

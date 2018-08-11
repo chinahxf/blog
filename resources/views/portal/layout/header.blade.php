@@ -13,19 +13,19 @@
                     <a class="nav-link" href="{{url('/')}}"><span class="zl-nav-font">首页</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/portal/articles/list/1')}}"><span
+                    <a class="nav-link" href="{{url('/articles/list/1')}}"><span
                                 class="zl-nav-font">思考</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/portal/articles/list/2')}}"><span
+                    <a class="nav-link" href="{{url('/articles/list/2')}}"><span
                                 class="zl-nav-font">杂文</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/portal/articles/list/3')}}"><span
+                    <a class="nav-link" href="{{url('/articles/list/3')}}"><span
                                 class="zl-nav-font">话题</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/portal/articles/list/3')}}"><span
+                    <a class="nav-link" href="{{url('/articles/list/3')}}"><span
                                 class="zl-nav-font">自然</span></a>
                 </li>
                 {{--@guest--}}

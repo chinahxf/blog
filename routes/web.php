@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route("portal");
-});
+//Route::get('/', function () {
+//    return redirect()->route("portal");
+//});
 Route::get('index', function () {
-    return redirect()->route("portal");
+    return redirect()->route("index");
 });
 
 Auth::routes();
@@ -84,10 +84,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Comm
         Route::post('/add_category', 'CommonController@storeCategory');
         Route::get('/getQiNiuToken', 'CommonController@getQiNiuToken');
 });
-Route::group(['prefix' => 'portal', 'namespace' => 'Portal'], function () {
-    Route::get('/qqlogin','TestController@qqlogin');
-    Route::get('/qq','TestController@qq');
-    Route::get('/', 'HomepageController@index')->name('portal');
+Route::group(['namespace' => 'Portal'], function () {
+    Route::get('/', 'HomepageController@index')->name('index');
     Route::group(['prefix' => 'login'], function () {
         Route::group(['prefix' => 'qq'], function () {
             Route::get('/', 'LoginController@qq');
