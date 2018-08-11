@@ -97,9 +97,9 @@ Route::group(['namespace' => 'Portal'], function () {
         Route::get('/list/{id}', 'ArticleController@list')->where('id','[0-9]+');
         Route::get('/{id}', 'ArticleController@info')->where('id','[0-9]+');
     });
-    Route::group(['prefix' => 'message'], function () {
-        Route::get('/list', 'MessageController@index');
-        Route::post('/', 'MessageController@store')->middleware("auth_json");
+    Route::group(['prefix' => 'comment'], function () {
+        Route::get('/list', 'CommentController@index');
+        Route::post('/', 'CommentController@store')->middleware("auth_json");
     });
     Route::group(['prefix' => 'friends'], function () {
         Route::get('/create', 'FriendController@create');

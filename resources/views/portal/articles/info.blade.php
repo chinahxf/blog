@@ -124,14 +124,14 @@
                                         <textarea class="form-control" rows="3" disabled="disabled"
                                                   placeholder="请先登录后发表回复"></textarea>
                                         <button type="button" class="btn btn-primary not-login zl-common-button"
-                                                data-touserid="{{$row->user_id}}" data-parentid="{{$row->message_id}}">
+                                                data-touserid="{{$row->user_id}}" data-parentid="{{$row->comment_id}}">
                                             Submit
                                         </button>
                                         @else
                                             <textarea class="form-control" rows="3"></textarea>
                                             <button type="button" class="btn btn-primary common-button zl-common-button"
                                                     data-touserid="{{$row->user_id}}"
-                                                    data-parentid="{{$row->message_id}}">
+                                                    data-parentid="{{$row->comment_id}}">
                                                 Submit
                                             </button>
                                             @endguest
@@ -157,14 +157,14 @@
                                                     <button type="button"
                                                             class="btn btn-primary not-login zl-common-button"
                                                             data-touserid="{{$item->user_id}}"
-                                                            data-parentid="{{$row->message_id}}">Submit
+                                                            data-parentid="{{$row->comment_id}}">Submit
                                                     </button>
                                                     @else
                                                         <textarea class="form-control" rows="3"></textarea>
                                                         <button type="button"
                                                                 class="btn btn-primary common-button zl-common-button"
                                                                 data-touserid="{{$item->user_id}}"
-                                                                data-parentid="{{$row->message_id}}">Submit
+                                                                data-parentid="{{$row->comment_id}}">Submit
                                                         </button>
                                                         @endguest
 
@@ -198,7 +198,7 @@
             var body_text = $(this).prev().val();
             var parent_id = $(this).data("parentid");
             $.ajax({
-                url: "{{url('/message')}}",
+                url: "{{url('/comment')}}",
                 type: "post",
                 data: {
                     article_id: article_id,
