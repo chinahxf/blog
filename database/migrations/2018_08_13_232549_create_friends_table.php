@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagsTable extends Migration
+class CreateFriendsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('friends', function (Blueprint $table) {
+            $table->increments('friend_id');
+            $table->string('email')->default('');
             $table->string('name')->default('');
+            $table->string('url')->default('');
+            $table->string('summary')->default('');
+            $table->unsignedTinyInteger('status')->default(0)->common('0，没审核，1审核通过,2审核没通过');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +32,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('friends');
     }
 }

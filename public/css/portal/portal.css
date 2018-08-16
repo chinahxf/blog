@@ -1,9 +1,12 @@
 body {
+    min-height: 100%;
     color: #333333;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
 }
-
+html {
+    height: 100%;
+}
 .zl-nav {
     /*background-color: #4bb547;*/
     padding: 2px 0 2px 0;
@@ -31,7 +34,7 @@ body {
 }
 
 .zl-article-list-big-div {
-    min-height: 446px;
+    min-height: 473px;
 }
 
 /*去除下间距*/
@@ -66,15 +69,20 @@ body {
     margin-top: 10px;
 }
 
-.zl_login_button {
+.zl-login-button {
     /*text-decoration:none;*/
     margin-left: 50px;
     color: black !important;
     outline: none;
 }
 
-.zl_register_button {
+.zl-register-button {
     /*text-decoration:none;*/
     color: black !important;
     outline: none;
+}
+
+.zl-index-center {
+    text-align: center;
+    margin-top:50px;
 }

@@ -48,8 +48,8 @@
             </ul>
             @guest
                 <span class="navbar-text">
-                    <a href="#" class="zl_login_button" data-toggle="modal" data-target="#exampleModal">登录</a>
-                    <a href="{{url('register')}}" class="zl_register_button">注册</a>
+                    <a href="#" class="zl-login-button" data-toggle="modal" data-target="#exampleModal">登录</a>
+                    <a href="{{url('register')}}" class="zl-register-button">注册</a>
                 </span>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-button type="primary" icon="el-icon-search" @click="addCategory">添加banner类型</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="addCategory">添加公告类型</el-button>
         <template>
             <el-table
                     :data="items"
@@ -9,11 +9,11 @@
             >
                 <el-table-column
                         prop="category_id"
-                        label="banner类型ID">
+                        label="标语类型ID">
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="banner类型名称">
+                        label="标语类型名称">
                 </el-table-column>
 
                 <el-table-column
@@ -29,11 +29,6 @@
                         <el-button
                                 size="mini"
                                 @click="handleDetail(scope.row.category_id)">查看
-                        </el-button>
-                        <el-button
-                                size="mini"
-                                type="danger"
-                                @click="handleDelete(scope.row.message_id)">删除
                         </el-button>
                     </template>
                 </el-table-column>
@@ -55,17 +50,17 @@
             }
         },
         mounted() {
-            this.getBannerCategoryList();
+            this.getSloganCategoryList();
         },
         methods: {
             handleDetail(id){
-                window.location.href = '/boss/banners/get_banner_list/'+id
+                window.location.href = '/boss/slogans/get_slogan_list/'+id
             },
-            getBannerCategoryList() {
+            getSloganCategoryList() {
                 var _this = this;
                 axios.get('/common/get_category',{
                     params:{
-                        type:'banner'
+                        type:'slogan'
                     }
                 })
                     .then(function (response) {
@@ -87,7 +82,7 @@
                     _this.loading = true;
                     axios.post('/common/add_category', {
                         name: value,
-                        category_type: 'banner',
+                        category_type: 'slogan',
                     })
                         .then(function (response) {
                             if (response.data.ret == 0) {
@@ -96,7 +91,7 @@
                                     message: response.data.msg,
                                     type: 'success'
                                 });
-                                _this.getBannerCategoryList();
+                                _this.getSloganCategoryList();
                                 _this.loading = false;
                             }
                         })

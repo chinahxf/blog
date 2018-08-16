@@ -1,7 +1,7 @@
 @extends('portal.layout.home')
 @section('content_portal')
     <!-- Page Content -->
-    <div class="zl-article-list-big-div container ">
+    <div class="zl-article-list-big-div container">
 
         <ol class="breadcrumb zl-article-list-header">
             <li class="breadcrumb-item">当前位置:</li>
@@ -23,7 +23,7 @@
                         <div class="col-lg-6">
                             <h4 class="card-title zl-article-list-title">{{$item->name}}</h4>
                             <p class="card-text">{{$item->body_text}}</p>
-                            <a href="#" class="btn btn-success">查看详情&rarr;</a>
+                            <a href="{{url("/articles/$item->article_id")}}" class="btn btn-success">查看详情&rarr;</a>
                         </div>
                     </div>
                 </div>

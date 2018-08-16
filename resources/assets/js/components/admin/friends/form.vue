@@ -1,29 +1,15 @@
 <template>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-1 control-label">banner名称</label>
+            <label class="col-sm-1 control-label">标题</label>
             <div class="col-sm-4">
                 <el-input v-model="form_data.name"></el-input>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">缩略图</label>
+            <label class="col-sm-1 control-label">地址</label>
             <div class="col-sm-4">
-                <img v-if="form_data.url" :src="form_data.url+'?imageView2/1/w/750/h/300'"class="img-rounded"/>
-                <a id="upLoadImg">点击上传banner图</a>
-                <!--<input type="file" id="aaa">-->
-                <!--<el-upload
-                        class="avatar-uploader"
-                        :show-file-list="false">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                    <i class="el-icon-plus avatar-uploader-icon"  v-else ></i>
-                </el-upload>-->
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-1 control-label">banner跳转地址</label>
-            <div class="col-sm-4">
-                <el-input v-model="form_data.to_url"></el-input>
+                <el-input v-model="form_data.url"></el-input>
             </div>
         </div>
 
@@ -38,31 +24,36 @@
 
 <script>
     export default {
-        props:["item_id","category_id"],
+        props:["item_id"],
         data() {
             return {
                 form_data: {
                     name: '',
                     url:'',
+                    status:1,
                 },
+                paginate:{},
                 items: [],
                 loading:true,
             }
         },
         mounted() {
-            this.upImg();
             if(this.item_id){
-                this.getBannerDetail();
+                var isEdit=true;
+                this.getFriendDetail();
+            }else{
+                var isEdit=false;
             }
         },
         methods: {
-            getBannerDetail() {
+            getFriendDetail() {
                 var _this = this;
-                axios.get("/boss/banners/"+_this.item_id)
+                axios.get("/boss/friends/"+_this.item_id)
                     .then(function (response) {
                         var result=response.data;
                         if(result.ret==0){
                             _this.form_data=response.data.data;
+                            _this.init_html=response.data.data.body_html;
                         }else{
                             _this.$message.error(result.msg);
                         }
@@ -73,21 +64,17 @@
                         console.log(error);
                     });
             },
-
             save(){
                 var _this = this;
-                if(_this.category_id){
-                    _this.form_data.category_id = _this.category_id;
-                }
                 if(_this.item_id){
-                    axios.put('/boss/banners/'+_this.item_id,{
+                    axios.put('/boss/friends/'+_this.item_id,{
                         form_data:_this.form_data,
 
                     })
                         .then(function (response) {
                             _this.$message({
                                 showClose: true,
-                                message: '修改banner成功！',
+                                message: '修改文章成功！',
                                 type: 'success'
                             });
                         })
@@ -95,14 +82,14 @@
                             console.log(error);
                         });
                 }else{
-                    axios.post('/boss/banners',{
+                    axios.post('/boss/friends',{
                         form_data:_this.form_data,
 
                     })
                         .then(function (response) {
                             _this.$message({
                                 showClose: true,
-                                message: '添加banner成功！',
+                                message: '添加文章成功！',
                                 type: 'success'
                             });
                         })
@@ -110,7 +97,7 @@
                             console.log(error);
                         });
                 }
-            }
+            },
         }
     }
 </script>

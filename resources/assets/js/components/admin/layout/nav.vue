@@ -47,6 +47,24 @@
                         <a href="/boss/tags"><el-menu-item index="4-1">tag管理</el-menu-item></a>
                     </el-menu-item-group>
                 </el-submenu>
+                <el-submenu index="5">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>公告</span>
+                    </template>
+                    <el-menu-item-group>
+                        <a href="/boss/slogans/category"><el-menu-item index="5-1">公告管理</el-menu-item></a>
+                    </el-menu-item-group>
+                </el-submenu>
+                <el-submenu index="6">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span>友情链接</span>
+                    </template>
+                    <el-menu-item-group>
+                        <a href="/boss/friends/get_friend_list"><el-menu-item index="6-1">友情链接管理</el-menu-item></a>
+                    </el-menu-item-group>
+                </el-submenu>
             </el-menu>
         </el-col>
     </el-row>

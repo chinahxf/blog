@@ -29,6 +29,12 @@ class CategoryTableSeeder extends Seeder
         ],[
             'name' => "评论",
             'category_type' => 'comment'
+        ],[
+            'name' => "首页",
+            'category_type' => 'slogan'
+        ],[
+            'name' => "右侧",
+            'category_type' => 'slogan'
         ]]);
     }
 }

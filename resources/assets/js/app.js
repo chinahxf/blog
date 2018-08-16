@@ -57,6 +57,18 @@ Vue.component('admin-banner-add', require('./components/admin/banners/form.vue')
 Vue.component('admin-banner-edit', require('./components/admin/banners/form.vue'));
 Vue.component('admin-banner-list', require('./components/admin/banners/list.vue'));
 
+//friend
+Vue.component('admin-friend-list', require('./components/admin/friends/list.vue'));
+Vue.component('admin-friend-add', require('./components/admin/friends/form.vue'));
+Vue.component('admin-friend-edit', require('./components/admin/friends/form.vue'));
+
+//slogan
+Vue.component('admin-slogan-category', require('./components/admin/slogans/cagegory/list.vue'));
+Vue.component('admin-slogan-add', require('./components/admin/slogans/form.vue'));
+// Vue.component('admin-banner-detail', require('./components/admin/articles/detail.vue'));
+Vue.component('admin-slogan-edit', require('./components/admin/slogans/form.vue'));
+Vue.component('admin-slogan-list', require('./components/admin/slogans/list.vue'));
+
 /*Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue')

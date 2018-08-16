@@ -15,8 +15,8 @@ class CreateTaggablesTable extends Migration
     {
         Schema::create('taggables', function (Blueprint $table) {
             $table->increments('tag_id');
-            $table->integer('taggable_id')->nullable();
-            $table->string('taggable_type')->nullable();
+            $table->integer('taggable_id')->default(0);
+            $table->string('taggable_type')->default('');
         });
     }
 

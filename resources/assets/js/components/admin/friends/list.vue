@@ -7,20 +7,24 @@
                     v-loading="loading"
             >
                 <el-table-column
-                        prop="banner_id"
-                        label="banner ID">
+                        prop="friend_id"
+                        label="友链ID">
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="banner名称">
+                        label="友链名">
                 </el-table-column>
                 <el-table-column
                         prop="url"
-                        label="图片">
+                        label="地址">
                 </el-table-column>
                 <el-table-column
-                        prop="to_url"
-                        label="跳转地址">
+                        prop="summary"
+                        label="简介">
+                </el-table-column>
+                <el-table-column
+                        prop="status"
+                        label="状态">
                 </el-table-column>
                 <el-table-column
                         prop="created_at"
@@ -30,17 +34,21 @@
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
-                                @click="handleDetail(scope.row.banner_id)">查看</el-button>
+                                @click="handleCheck(scope.row.friend_id,true)">通过</el-button>
                         <el-button
                                 size="mini"
-                                @click="handleEdit(scope.row.banner_id)">编辑</el-button>
+                                @click="handleCheck(scope.row.friend_id,false)">拒绝</el-button>
+                        <el-button
+                                size="mini"
+                                @click="handleEdit(scope.row.article_id)">编辑</el-button>
                         <el-button
                                 size="mini"
                                 type="danger"
-                                @click="handleDelete(scope.row.article_id)">删除</el-button>
+                                @click="handleDelete(scope.row.friend_id)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
+
         </template>
 
         <div class="block">
@@ -57,53 +65,59 @@
 
 <script>
     export default {
-        props:["item_id"],
         data() {
             return {
                 form_data: {
                     dates: [],
                     name: '',
-                    url:''
+                    category_id:''
                 },
-//                dialogFormVisible: false,
                 paginate:{},
                 items: [],
-//                categories:[],
+                categories:[],
                 loading:true,
             }
         },
         mounted() {
-console.log(this.item_id)
-            this.getBannerList();
-//            this.upImg();
-            //            this.getCategoryList();
+            this.getFriendList();
         },
         methods: {
-           /* openImg(){
-//                this.hidden_id = false;
-                console.log("open image")
-
-            },*/
-            handleDetail(id){
-//                this.dialogFormVisible = true;
-//                window.location.href = '/boss/articles/detail_article/'+id
-            },
             handleEdit(id){
-//                this.dialogFormVisible = true;
-                window.location.href = '/boss/banners/edit_banner/'+id
+                window.location.href = '/boss/friends/edit_friend/'+id},
+            handleCheck(id){
+            },
+            handleDelete(id){
+                var _this = this;
+                _this.$confirm('此操作将删除该友链申请, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.delete('/boss/friends/'+id,{})
+                        .then(function (response) {
+                            _this.getFriendList();
+                            _this.$message({
+                                type: 'success',
+                                message: response.data.msg
+                            });
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }).catch(() => {
+
+                });
             },
             handleCurrentChange(val){
                 var _this = this;
-                _this.getBannerList(val)
+                _this.getFriendList(val)
             },
-            getBannerList(page=1) {
-                console.log("aaaaaa");
-                console.log(page);
+            getFriendList(page=1) {
                 var _this = this;
-                console.log(_this.item_id);
-                axios.get("/boss/banners/list/"+_this.item_id,{
+                axios.get('/boss/friends',{
                     params:{
-                        page:page
+                        page:page,
                     }
                 })
                     .then(function (response) {
@@ -115,6 +129,7 @@ console.log(this.item_id)
                     .catch(function (error) {
                         console.log(error);
                     });
+
             },
         }
     }

@@ -7,6 +7,7 @@ use App\Mail\CommentSendMail;
 use App\Model\Article;
 use App\Model\Category;
 use App\Model\Comment;
+use App\Model\Slogan;
 use App\model\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,9 +22,16 @@ class ArticleController extends PortalBaseController
     public function list($id = false, Request $request)
     {
         $query = Article::query();
+
         if ($id) {
             $query->where("category_id", $id);
             $category_name = Category::find($id)->name;
+        }
+        $time = $request->get('time');
+
+        if ($time){
+            $category_name="$time";
+            $query->where("created_at", 'LIKE','%'.$time.'%');
         }
         //Log::info("aaa");
         //$message = (new CommentSendMail())->onQueue("email");
@@ -79,49 +87,13 @@ class ArticleController extends PortalBaseController
                 $comments[] = $item;
             }
         }
-        /*        $message_all = $info->messages()->get()->toArray();
-                foreach($message_all as $item){
-                    $item["user_name"]=
-                    if ($item['parent_id']==""){
-                        $messages['article_comment'][]=$item;
-                    }else{
-                        $messages[$item['parent_id']][]=$item;
-                    }
-                }
-                foreach($messages['article_comment'] as $key=>$val){
-                    $messages['article_comment'][$key]["children"] = $messages[$val['message_id']]??[];
-                }
-                $messages=$messages['article_comment'];*/
-
-        //        $depth_max = $info->messages()->max("depth");
-        //        for($i=0;$i<$depth_max;$i++){
-        //            $depth_all[$i]=[];
-        //        }
-        ////       $m= $this->deeploop($message_all);
-        ////        dd($depth_max);
-        //        foreach($message_all as $item){
-        //            foreach($depth_all as $k=>$a){
-        //                if($item['depth']==$k){
-        //                    $depth_all[$k][]=$item;
-        //                }
-        //
-        //            }
-        //
-        //
-        //        }
-        /*for($i=0;$i<$depth_max;$i++){
-            foreach($message_all as $item){
-                if($item["depth"]==$i+1){
-                    $item["children"]=$item;
-                }
-            }
-        }*/
-        //        dd($messages);
+        $slogan = Slogan::where("category_id",8)->first();
+        $article_tags = $info->tags()->get();
         $article_r = Article::select('name', 'article_id')->orderBy('created_at', 'desc')->take(10)->get();
         $comment_r = Comment::select('body_text', 'article_id', 'created_at')->orderBy('created_at', 'desc')->take(10)->get();
         $tag_r = Tag::select('name', 'id')->orderBy('created_at', 'desc')->take(10)->get();
-        //        dd($articles);
-        //        $comment = Comment::where('');
-        return view("portal.articles.info", compact("info", "comments", "article_r", 'comment_r', 'tag_r'));
+        $articles = Article::selectRaw('DATE_FORMAT(created_at,"%Y-%m-%d") as time,count(0) as c')->groupBy('time')->get();
+
+        return view("portal.articles.info", compact("info", "comments", "article_r", 'comment_r', 'tag_r','articles','article_tags','slogan'));
     }
 }

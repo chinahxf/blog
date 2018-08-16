@@ -82,12 +82,16 @@
                     作者：{{$info->user_id}}
                     创建时间：{{$info->created_at}}
                     浏览量：{{$info->browse_num}}
-                    文章类型：{{$info->category_name}}
+                    文章类型：{{$info->categorys->name??''}}
 
                 </p>
 
                 <hr>
                 {!! $info->body_html !!}
+                <hr>
+                标签：@foreach($article_tags as $key=>$item)
+                    <a class="btn btn-sm {{$tag_arr[$key]}}" href="{{url("/tags/$item->id")}}" role="button">{{$item->name}}</a>
+                      @endforeach
                 <hr>
                 <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址">复制网址</a><a href="#" class="bds_more" data-cmd="more">分享到：</a></div>
                 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","sqq","qzone","douban","copy"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
@@ -100,11 +104,11 @@
                             @guest
                                 <textarea class="form-control" rows="3" disabled="disabled"
                                           placeholder="请先登录后发表评论"></textarea>
-                                <button type="button" class="btn btn-primary not-login zl-common-button">Submit</button>
+                                <button type="button" class="btn btn-primary not-login zl-common-button">评论</button>
                                 @else
                                     <textarea class="form-control" rows="3"></textarea>
                                     <button type="button" class="btn btn-primary common-button zl-common-button"
-                                            data-touserid="" data-parentid="">Submit
+                                            data-touserid="" data-parentid="">评论
                                     </button>
                                     @endguest
                         </div>
@@ -125,14 +129,14 @@
                                                   placeholder="请先登录后发表回复"></textarea>
                                         <button type="button" class="btn btn-primary not-login zl-common-button"
                                                 data-touserid="{{$row->user_id}}" data-parentid="{{$row->comment_id}}">
-                                            Submit
+                                            评论
                                         </button>
                                         @else
                                             <textarea class="form-control" rows="3"></textarea>
                                             <button type="button" class="btn btn-primary common-button zl-common-button"
                                                     data-touserid="{{$row->user_id}}"
                                                     data-parentid="{{$row->comment_id}}">
-                                                Submit
+                                                评论
                                             </button>
                                             @endguest
 

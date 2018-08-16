@@ -7,20 +7,12 @@
                     v-loading="loading"
             >
                 <el-table-column
-                        prop="banner_id"
-                        label="banner ID">
+                        prop="slogan_id"
+                        label="标语id">
                 </el-table-column>
                 <el-table-column
-                        prop="name"
-                        label="banner名称">
-                </el-table-column>
-                <el-table-column
-                        prop="url"
-                        label="图片">
-                </el-table-column>
-                <el-table-column
-                        prop="to_url"
-                        label="跳转地址">
+                        prop="body_text"
+                        label="内容">
                 </el-table-column>
                 <el-table-column
                         prop="created_at"
@@ -28,16 +20,16 @@
                 </el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
+                        <!--<el-button-->
+                                <!--size="mini"-->
+                                <!--@click="handleDetail(scope.row.banner_id)">查看</el-button>-->
                         <el-button
                                 size="mini"
-                                @click="handleDetail(scope.row.banner_id)">查看</el-button>
-                        <el-button
-                                size="mini"
-                                @click="handleEdit(scope.row.banner_id)">编辑</el-button>
-                        <el-button
-                                size="mini"
-                                type="danger"
-                                @click="handleDelete(scope.row.article_id)">删除</el-button>
+                                @click="handleEdit(scope.row.slogan_id)">编辑</el-button>
+                        <!--<el-button-->
+                                <!--size="mini"-->
+                                <!--type="danger"-->
+                                <!--@click="handleDelete(scope.row.article_id)">删除</el-button>-->
                     </template>
                 </el-table-column>
             </el-table>
@@ -73,8 +65,7 @@
             }
         },
         mounted() {
-console.log(this.item_id)
-            this.getBannerList();
+            this.getSloganList();
 //            this.upImg();
             //            this.getCategoryList();
         },
@@ -90,18 +81,15 @@ console.log(this.item_id)
             },
             handleEdit(id){
 //                this.dialogFormVisible = true;
-                window.location.href = '/boss/banners/edit_banner/'+id
+                window.location.href = '/boss/slogans/edit_slogan/'+id
             },
             handleCurrentChange(val){
                 var _this = this;
-                _this.getBannerList(val)
+                _this.getSloganList(val)
             },
-            getBannerList(page=1) {
-                console.log("aaaaaa");
-                console.log(page);
+            getSloganList(page=1) {
                 var _this = this;
-                console.log(_this.item_id);
-                axios.get("/boss/banners/list/"+_this.item_id,{
+                axios.get("/boss/slogans/list/"+_this.item_id,{
                     params:{
                         page:page
                     }

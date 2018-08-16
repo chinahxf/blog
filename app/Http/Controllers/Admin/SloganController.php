@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Common\AdminBaseController;
-use App\Model\Banner;
+use App\Model\Slogan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BannerController extends AdminBaseController
+class SloganController extends AdminBaseController
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -17,14 +16,14 @@ class BannerController extends AdminBaseController
      */
     public function index($id)
     {
-        $query = Banner::query();
+        $query = Slogan::query();
         if ($id){
             $query = $query->where("category_id",$id);
         }
-//        $banner_list = Banner::get();
-        $banner_list = $query->paginate($this->limit);
+        //        $banner_list = Banner::get();
+        $slogan_list = $query->paginate($this->limit);
 
-        return $this->sendSuccess($banner_list);
+        return $this->sendSuccess($slogan_list);
     }
 
     /**
@@ -47,7 +46,7 @@ class BannerController extends AdminBaseController
     {
         $data = $request->all()['form_data'];
         //        return $this->sendResult("","",$data);
-        $result = Banner::create($data);
+        $result = Slogan::create($data);
         if ($result) {
             return $this->sendSuccess("","添加成功！");
         }
@@ -62,13 +61,12 @@ class BannerController extends AdminBaseController
      */
     public function show($id)
     {
-        $banners = Banner::find($id);
+        $banners = Slogan::find($id);
         if ($banners){
             return $this->sendSuccess($banners);
         }
         return $this->sendFail("获取失败！");
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -91,8 +89,8 @@ class BannerController extends AdminBaseController
     public function update(Request $request, $id)
     {
         $data = $request->all()['form_data'];
-        $banner = Banner::find($id);
-        $result = $banner->update($data);
+        $slogan = Slogan::find($id);
+        $result = $slogan->update($data);
         if (!$result) {
             return $this->sendFail("修改失败！");
         }

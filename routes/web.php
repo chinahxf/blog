@@ -66,7 +66,7 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'boss', 'namespac
 //        Route::get('/edit_article/{id}', 'ArticleController@editArticle')->where('id', '[0-9]+');
 //        Route::get('/category', 'ArticleController@categoryArticle');
 //
-        Route::get('/list{id}', 'BannerController@index')->where('id', '[0-9]+');
+        Route::get('/list/{id}', 'BannerController@index')->where('id', '[0-9]+');
         Route::get('/{id}', 'BannerController@show')->where('id', '[0-9]+');
         Route::post('/', 'BannerController@store');
         Route::put('/{id}', 'BannerController@update')->where('id', '[0-9]+');
@@ -76,6 +76,32 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'boss', 'namespac
 
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', 'CategoryController@index');
+    });
+
+    Route::group(['prefix'=>'friends'],function(){
+        Route::view('/get_friend_list', 'admin.friends.list');
+        Route::get('/','FriendController@index');
+        Route::get('/{id}', 'FriendController@show')->where('id', '[0-9]+');
+        Route::view('/add_friend', 'admin.friends.add');
+        Route::post('/', 'FriendController@store');
+        Route::put('/{id}', 'FriendController@update')->where('id', '[0-9]+');
+        Route::delete('/{id}', 'FriendController@destroy')->where('id', '[0-9]+');
+    });
+    Route::group(['prefix'=>'slogans'],function(){
+        Route::get('/get_slogan_list/{id}', function($id){
+            return view('admin.slogans.list',['category_id'=>$id]);
+        })->where('id', '[0-9]+');
+        Route::view('/category', 'admin.slogans.category.list');
+        Route::get('/add_slogan/{category_id}', function($id){
+            return view('admin.slogans.add',['category_id'=>$id]);
+        })->where('id', '[0-9]+');
+        Route::get('/edit_slogan/{id}', function ($id){
+            return view('admin.slogans.edit',['id'=>$id]);
+        })->where('id', '[0-9]+');
+        Route::get('/list/{id}', 'SloganController@index')->where('id', '[0-9]+');
+        Route::get('/{id}', 'SloganController@show')->where('id', '[0-9]+');
+        Route::post('/', 'SloganController@store');
+        Route::put('/{id}', 'SloganController@update')->where('id', '[0-9]+');
     });
 });
 Route::group(['middleware' => 'auth', 'prefix' => 'common', 'namespace' => 'Common'], function () {
@@ -95,6 +121,7 @@ Route::group(['namespace' => 'Portal'], function () {
     });
     Route::group(['prefix' => 'articles'], function () {
         Route::get('/list/{id}', 'ArticleController@list')->where('id','[0-9]+');
+        Route::get('/list', 'ArticleController@list');
         Route::get('/{id}', 'ArticleController@info')->where('id','[0-9]+');
     });
     Route::group(['prefix' => 'comment'], function () {

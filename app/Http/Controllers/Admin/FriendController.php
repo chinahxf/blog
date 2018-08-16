@@ -3,28 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Common\AdminBaseController;
-use App\Model\Banner;
+use App\Model\Friend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class BannerController extends AdminBaseController
+class FriendController extends AdminBaseController
 {
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $query = Banner::query();
-        if ($id){
-            $query = $query->where("category_id",$id);
-        }
-//        $banner_list = Banner::get();
-        $banner_list = $query->paginate($this->limit);
+        $friend_list = Friend::paginate($this->limit);
 
-        return $this->sendSuccess($banner_list);
+        return $this->sendSuccess($friend_list);
     }
 
     /**
@@ -40,40 +34,41 @@ class BannerController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $data = $request->all()['form_data'];
-        //        return $this->sendResult("","",$data);
-        $result = Banner::create($data);
+
+        $result = Friend::create($data);
+
         if ($result) {
-            return $this->sendSuccess("","添加成功！");
+            return $this->sendSuccess("", "添加成功！");
         }
-        return $this->sendFail('');
+        return $this->sendFail("添加失败！");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $banners = Banner::find($id);
-        if ($banners){
-            return $this->sendSuccess($banners);
+        $result = Friend::find($id);
+        if ($result) {
+            $friend = $result->toArray();
+            return $this->sendSuccess($friend);
         }
-        return $this->sendFail("获取失败！");
+        return $this->sendFail("没有找到该友链信息！");
     }
-
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,15 +79,18 @@ class BannerController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $data = $request->all()['form_data'];
-        $banner = Banner::find($id);
-        $result = $banner->update($data);
+        $tags = [];
+
+
+        $friend = Friend::find($id);
+        $result = $friend->update($data);
         if (!$result) {
             return $this->sendFail("修改失败！");
         }
@@ -102,11 +100,18 @@ class BannerController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        if (!$id){
+            return $this->sendFail("缺少参数");
+        }
+
+        $result=Friend::destroy($id);
+        if ($result){
+            return $this->sendSuccess("","删除友链成功！");
+        }
     }
 }
