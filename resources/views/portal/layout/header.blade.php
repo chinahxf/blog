@@ -28,6 +28,10 @@
                     <a class="nav-link" href="{{url('/articles/list/3')}}"><span
                                 class="zl-nav-font">自然</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('/friends/add_friend')}}"><span
+                                class="zl-nav-font">友链</span></a>
+                </li>
                 {{--@guest--}}
                 {{--<li class="nav-item">--}}
 

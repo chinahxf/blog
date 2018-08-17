@@ -129,7 +129,7 @@ Route::group(['namespace' => 'Portal'], function () {
         Route::post('/', 'CommentController@store')->middleware("auth_json");
     });
     Route::group(['prefix' => 'friends'], function () {
-        Route::get('/create', 'FriendController@create');
+        Route::view("/add_friend","portal.friends.create");
         Route::post('/', 'FriendController@store');
     });
     Route::group(['prefix' => 'tags'], function () {

@@ -57,7 +57,7 @@
     {{--</div>--}}
     {{--</div>--}}
     <!-- Page Content -->
-    <div class="container">
+    <div class="zl-article-list-big-div container">
 
         {{--<!-- Page Heading/Breadcrumbs -->--}}
         {{--<h1 class="mt-4 mb-3">{{$info->name}}--}}
