@@ -1,29 +1,31 @@
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4">
 
-{{--<!-- Search Widget -->--}}
-{{--<div class="card mb-4">--}}
-{{--<h5 class="card-header">Search</h5>--}}
-{{--<div class="card-body">--}}
-{{--<div class="input-group">--}}
-{{--<input type="text" class="form-control" placeholder="Search for...">--}}
-{{--<span class="input-group-btn">--}}
-{{--<button class="btn btn-secondary" type="button">Go!</button>--}}
-{{--</span>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
+    {{--<!-- Search Widget -->--}}
+    {{--<div class="card mb-4">--}}
+    {{--<h5 class="card-header">Search</h5>--}}
+    {{--<div class="card-body">--}}
+    {{--<div class="input-group">--}}
+    {{--<input type="text" class="form-control" placeholder="Search for...">--}}
+    {{--<span class="input-group-btn">--}}
+    {{--<button class="btn btn-secondary" type="button">Go!</button>--}}
+    {{--</span>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     <div class="card my-4">
         <h5 class="card-header">公告</h5>
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    {{$slogan->body_text}}
+                    @if(isset($slogan))
+                        {{$slogan->body_text}}
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-<!-- Categories Widget -->
+    <!-- Categories Widget -->
     <div class="card my-4">
         <h5 class="card-header">最新文章</h5>
         <div class="card-body">
@@ -62,7 +64,8 @@
         <div class="card-body">
             @foreach($tag_r->chunk(8) as $tag)
                 @foreach($tag as $key=>$item)
-                    <a class="btn btn-sm {{$tag_arr[$key]}}" href="{{url("/tags/$item->id")}}" role="button">{{$item->name}}</a>
+                    <a class="btn btn-sm {{$tag_arr[$key]}}" href="{{url("/tags/$item->id")}}"
+                       role="button">{{$item->name}}</a>
                 @endforeach
             @endforeach
         </div>

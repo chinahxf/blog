@@ -80,6 +80,9 @@ Route::group(['middleware' => ['is_admin','auth'], 'prefix' => 'boss', 'namespac
 
     Route::group(['prefix'=>'friends'],function(){
         Route::view('/get_friend_list', 'admin.friends.list');
+        Route::get('/edit_friend/{id}', function($id){
+            return view('admin.friends.edit',['id'=>$id]);
+        })->where('id', '[0-9]+');
         Route::get('/','FriendController@index');
         Route::get('/{id}', 'FriendController@show')->where('id', '[0-9]+');
         Route::view('/add_friend', 'admin.friends.add');

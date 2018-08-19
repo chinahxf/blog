@@ -23,6 +23,7 @@
                         label="简介">
                 </el-table-column>
                 <el-table-column
+                        :formatter="stateFormat"
                         prop="status"
                         label="状态">
                 </el-table-column>
@@ -34,17 +35,21 @@
                     <template slot-scope="scope">
                         <el-button
                                 size="mini"
-                                @click="handleCheck(scope.row.friend_id,true)">通过</el-button>
+                                @click="handleCheck(scope.row.friend_id,1)">通过
+                        </el-button>
                         <el-button
                                 size="mini"
-                                @click="handleCheck(scope.row.friend_id,false)">拒绝</el-button>
+                                @click="handleCheck(scope.row.friend_id,2)">拒绝
+                        </el-button>
                         <el-button
                                 size="mini"
-                                @click="handleEdit(scope.row.article_id)">编辑</el-button>
+                                @click="handleEdit(scope.row.friend_id)">编辑
+                        </el-button>
                         <el-button
                                 size="mini"
                                 type="danger"
-                                @click="handleDelete(scope.row.friend_id)">删除</el-button>
+                                @click="handleDelete(scope.row.friend_id)">删除
+                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -67,33 +72,54 @@
     export default {
         data() {
             return {
-                form_data: {
-                    dates: [],
-                    name: '',
-                    category_id:''
-                },
-                paginate:{},
+                paginate: {},
                 items: [],
-                categories:[],
-                loading:true,
+                categories: [],
+                loading: true,
             }
         },
         mounted() {
             this.getFriendList();
         },
         methods: {
-            handleEdit(id){
-                window.location.href = '/boss/friends/edit_friend/'+id},
-            handleCheck(id){
+            stateFormat(row, column) {
+                if (row.status === 0) {
+                    return '未审核'
+                } else if (row.status === 1) {
+                    return '通过'
+                } else if (row.status === 2) {
+                    return '拒绝'
+                }
             },
-            handleDelete(id){
+            handleEdit(id) {
+                window.location.href = '/boss/friends/edit_friend/' + id
+            },
+            handleCheck(id, status) {
+                var _this = this;
+                axios.put('/boss/friends/' + id, {
+                    status: status,
+                })
+                    .then(function (response) {
+                        _this.getFriendList();
+                        _this.$message({
+                            showClose: true,
+                            message: '审核成功！',
+                            type: 'success'
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            },
+            handleDelete(id) {
                 var _this = this;
                 _this.$confirm('此操作将删除该友链申请, 是否继续?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    axios.delete('/boss/friends/'+id,{})
+                    axios.delete('/boss/friends/' + id, {})
                         .then(function (response) {
                             _this.getFriendList();
                             _this.$message({
@@ -109,22 +135,22 @@
 
                 });
             },
-            handleCurrentChange(val){
+            handleCurrentChange(val) {
                 var _this = this;
                 _this.getFriendList(val)
             },
-            getFriendList(page=1) {
+            getFriendList(page = 1) {
                 var _this = this;
-                axios.get('/boss/friends',{
-                    params:{
-                        page:page,
+                axios.get('/boss/friends', {
+                    params: {
+                        page: page,
                     }
                 })
                     .then(function (response) {
                         console.log(response);
                         _this.items = response.data.data.data;
                         _this.paginate = response.data.data;
-                        _this.loading=false;
+                        _this.loading = false;
                     })
                     .catch(function (error) {
                         console.log(error);

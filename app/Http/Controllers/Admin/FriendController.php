@@ -85,9 +85,11 @@ class FriendController extends AdminBaseController
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all()['form_data'];
-        $tags = [];
-
+        if ($status = $request->get('status')){
+            $data['status'] = $status;
+        }else{
+            $data = $request->all()['form_data'];
+        }
 
         $friend = Friend::find($id);
         $result = $friend->update($data);
