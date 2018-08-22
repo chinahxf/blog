@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->string('photo')->nullable();
             $table->string('oauth_type',20)->default('email');
-            $table->string('oauth_id',50)->default(0);
+            $table->string('oauth_id',50)->nullable();
             $table->tinyInteger('is_ad_hxf')->default(0);
             $table->string('login_ip',20)->nullable();
             $table->rememberToken();
