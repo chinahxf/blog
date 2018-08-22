@@ -30,7 +30,6 @@ class LoginController extends Controller
         if ($user_login->save()){
             Auth::loginUsingId($user_login->id);
         }
-        $index = new HomepageController();
-        $index->index();
+        return redirect("/");
     }
 }
