@@ -2,11 +2,13 @@
 @section('content_portal')
     <div class="swiper-container" style="height: 400px;">
         <div class="swiper-wrapper">
-            @foreach($banners as $item)
-                <div class="swiper-slide"><a href="{{$item->to_url}}"><img src="{{$item->url}}" alt="{{$item->name}}"
-                                                                           title="{{$item->name}}" style="width: 100%"/></a>
-                </div>
-            @endforeach
+            @if(isset($banners))
+                @foreach($banners as $item)
+                    <div class="swiper-slide"><a href="{{$item->to_url}}"><img src="{{$item->url}}" alt="{{$item->name}}"
+                                                                               title="{{$item->name}}" style="width: 100%"/></a>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
     @if(isset($slogan))
