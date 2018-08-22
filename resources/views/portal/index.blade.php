@@ -38,7 +38,7 @@
             </div>
         @endif
         <h2>杂文</h2>
-        @if($articles[2])
+        @if(isset($articles[2]))
             <div class="row">
                 @foreach($articles[2] as $item)
                     <div class="col-lg-4 col-sm-6 portfolio-item">

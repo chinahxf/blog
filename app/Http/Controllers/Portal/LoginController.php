@@ -30,7 +30,7 @@ class LoginController extends Controller
         if ($user_login->save()){
             Auth::loginUsingId($user_login->id);
         }
-        return view("portal.index");
-
+        $index = new HomepageController();
+        $index->index();
     }
 }
