@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function qqcallback(Request $request)
     {
         $user = Socialite::driver('qq')->user();
-        $user_login = User::where("oauth_id",$user->id)->andWhere("oauth_type",'qq')->first();
+        $user_login = User::where("oauth_id",$user->id)->where("oauth_type",'qq')->first();
         if (!$user_login){
             $user_login = new User();
             $user_login->oauth_id = $user->id;
