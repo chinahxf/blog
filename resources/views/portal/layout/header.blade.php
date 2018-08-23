@@ -67,7 +67,8 @@
                 </div>
                 @else
                     <div class="dropdown show">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://placehold.it/25x25" class="rounded-circle"/></a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{\Illuminate\Support\Facades\Auth::user()->photo}}" class="rounded-circle"/><span>{{\Illuminate\Support\Facades\Auth::user()->name}}</span></a>
+
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#"
                                onclick="event.preventDefault();

@@ -19,7 +19,7 @@
     <div class="container">
 
         <h1 class="my-4">思考</h1>
-        @if(isset($articles[1]))
+        @isset($articles[1])
             <div class="row">
                 @foreach($articles[1] as $item)
                     <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -36,9 +36,9 @@
                     </div>
                 @endforeach
             </div>
-        @endif
+        @endisset
         <h2>杂文</h2>
-        @if(isset($articles[2]))
+        @isset($articles[2])
             <div class="row">
                 @foreach($articles[2] as $item)
                     <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -55,7 +55,7 @@
                     </div>
                 @endforeach
             </div>
-        @endif
+        @endisset
     </div>
 @section('portal_script')
     <script>
