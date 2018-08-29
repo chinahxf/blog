@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            DB::table('articles')->increment('browse_num', 5);
-        })->everyMinute();
+            DB::table('articles')->increment('browse_num', 7);
+        })->daily();
         // $schedule->command('inspire')
         //          ->hourly();
     }
