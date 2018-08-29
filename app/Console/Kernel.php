@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Model\Article;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,6 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->call(function () {
+            DB::table('articles')->increment('browse_num', 5);
+        })->everyMinute();
         // $schedule->command('inspire')
         //          ->hourly();
     }
