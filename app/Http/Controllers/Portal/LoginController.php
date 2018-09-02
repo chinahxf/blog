@@ -34,7 +34,7 @@ class LoginController extends Controller
     }
     public function weibo()
     {
-        return Socialite::with('weibo')->redirect();
+        return Socialite::with('Weibo')->redirect();
     }
     public function weibocallback(Request $request)
     {
