@@ -34,7 +34,7 @@ html {
 }
 
 .zl-article-list-big-div {
-    min-height: 473px;
+    min-height: calc(100vh - 140px);
 }
 
 /*去除下间距*/

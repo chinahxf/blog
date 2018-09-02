@@ -32,4 +32,27 @@ class LoginController extends Controller
         }
         return redirect("/");
     }
+    public function weibo()
+    {
+        return Socialite::with('weibo')->redirect();
+    }
+    public function weibocallback(Request $request)
+    {
+        $user = Socialite::driver('weibo')->user();
+        dd($user);
+        $user_login = User::where("oauth_id",$user->id)->where("oauth_type",'qq')->first();
+        if (!$user_login){
+            $user_login = new User();
+            $user_login->oauth_id = $user->id;
+            $user_login->oauth_type = 'qq';
+        }
+        $user_login->name = $user->nickname;
+        $user_login->email = $user->email;
+        $user_login->photo = $user->user['figureurl'];
+        $user_login->login_ip = $request->getClientIp();
+        if ($user_login->save()){
+            Auth::loginUsingId($user_login->id);
+        }
+        return redirect("/");
+    }
 }

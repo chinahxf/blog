@@ -120,6 +120,10 @@ Route::group(['namespace' => 'Portal'], function () {
             Route::get('/', 'LoginController@qq');
             Route::get('/callback', 'LoginController@qqcallback');
         });
+        Route::group(['prefix' => 'weibo'], function () {
+            Route::get('/', 'LoginController@weibo');
+            Route::get('/callback', 'LoginController@weibocallback');
+        });
 
     });
     Route::group(['prefix' => 'articles'], function () {
