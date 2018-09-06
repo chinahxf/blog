@@ -62,6 +62,7 @@
                             <div class="modal-body">
                                 <a href="{{url('/login')}}">邮箱登录</a>
                                 <a href="{{url('/login/qq')}}" style="margin-left: 10px;"><img src="{{asset('/images/qq.png')}}"/></a>
+                                <a href="{{url('/login/weibo')}}" style="margin-left: 10px;"><img src="{{asset('/images/weibo.png')}}"/></a>
                             </div>
                         </div>
                     </div>

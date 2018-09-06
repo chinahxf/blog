@@ -39,7 +39,6 @@ class LoginController extends Controller
     public function weibocallback(Request $request)
     {
         $user = Socialite::driver('weibo')->user();
-        dd($user);
         $user_login = User::where("oauth_id",$user->id)->where("oauth_type",'weibo')->first();
         if (!$user_login){
             $user_login = new User();
@@ -48,7 +47,7 @@ class LoginController extends Controller
         }
         $user_login->name = $user->nickname;
         $user_login->email = $user->email;
-        $user_login->photo = $user->user['figureurl'];
+        $user_login->photo = $user->user['avatar'];
         $user_login->login_ip = $request->getClientIp();
         if ($user_login->save()){
             Auth::loginUsingId($user_login->id);
