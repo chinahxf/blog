@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Keywords" content="生命，自然，思考，杂文">
-    <meta name="description" content="在这个喧杂的社会中，是否可以静下心来，思考一下关于自然，关于生命，把看到问题的第一想法说出来，我们一起分享">
+    <meta name="keywords" content="生命,自然,思考,杂文">
+    <meta name="description" content="社会节奏太快，是否能静下心来,思考一下关于自然,关于生命,关于身边发生的一切.">
     <meta name="author" content="hxf">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

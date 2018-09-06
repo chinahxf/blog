@@ -40,11 +40,11 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('weibo')->user();
         dd($user);
-        $user_login = User::where("oauth_id",$user->id)->where("oauth_type",'qq')->first();
+        $user_login = User::where("oauth_id",$user->id)->where("oauth_type",'weibo')->first();
         if (!$user_login){
             $user_login = new User();
             $user_login->oauth_id = $user->id;
-            $user_login->oauth_type = 'qq';
+            $user_login->oauth_type = 'weibo';
         }
         $user_login->name = $user->nickname;
         $user_login->email = $user->email;
