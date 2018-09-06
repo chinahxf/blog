@@ -47,7 +47,7 @@ class LoginController extends Controller
         }
         $user_login->name = $user->nickname;
         $user_login->email = $user->email;
-        $user_login->photo = $user->user['avatar'];
+        $user_login->photo = $user->avatar;
         $user_login->login_ip = $request->getClientIp();
         if ($user_login->save()){
             Auth::loginUsingId($user_login->id);
