@@ -69,8 +69,8 @@
                 </div>
                 @else
                     <div class="dropdown show">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{\Illuminate\Support\Facades\Auth::user()->photo}}" class="rounded-circle" style="width: 30px;height: 30px;"/>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 5px;padding-bottom: 5px;">
+                            <img src="{{\Illuminate\Support\Facades\Auth::user()->photo}}" class="rounded-circle" style="width: 25px;height: 25px;"/>
                             <span>{{\Illuminate\Support\Facades\Auth::user()->name}}</span></a>
 
                         <div class="dropdown-menu">
